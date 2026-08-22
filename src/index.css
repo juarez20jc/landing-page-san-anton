@@ -1,0 +1,381 @@
+@import 'tailwindcss';
+
+/* =========================================================================
+   San Antón — SISTEMA DE DISEÑO
+   -------------------------------------------------------------------------
+   Dirección: clínico y confiable, pero cálido. El motivo que se repite en
+   toda la página es la FICHA CLÍNICA: tarjeta con pestaña de carpeta, filete
+   punteado, sello de goma y datos en tipografía monoespaciada, como los
+   expedientes que un veterinario usa de verdad.
+   ========================================================================= */
+
+@theme {
+  /* --- Color -------------------------------------------------------------
+     quirofano  verde quirúrgico profundo — color de marca, fondos oscuros
+     eucalipto  verde medio — bordes, estados hover
+     menta      superficie clara verdosa — tarjetas y bandas alternas
+     gasa       fondo de página, blanco con matiz verde (no crema)
+     ambar      acento cálido — CTA, sellos, subrayados
+     urgencia   rojo funcional — urgencias 24 h y errores de formulario
+     tinta      texto                                                       */
+  --color-quirofano: #0d3b3a;
+  --color-eucalipto: #1e5c57;
+  --color-menta: #d9eae3;
+  --color-gasa: #f4f7f4;
+  --color-ambar: #e8a33d;
+  --color-ambar-hondo: #96600f;
+  --color-urgencia: #b03a32;
+  --color-tinta: #122220;
+  --color-tinta-suave: #4a5f5b;
+
+  /* --- Tipografía --------------------------------------------------------
+     display  Bricolage Grotesque — carácter, con restricción
+     sans     Instrument Sans — cuerpo, legible y humanista
+     mono     IBM Plex Mono — datos de expediente: horarios, cédulas, sellos */
+  --font-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
+
+  /* --- Escala fluida (máximo <= 2.5x el mínimo, para no romper el zoom) -- */
+  --text-despliegue: clamp(2.1rem, 1.35rem + 3.2vw, 4.25rem);
+  --text-titulo: clamp(2rem, 1.4rem + 2.4vw, 3.4rem);
+  --text-subtitulo: clamp(1.25rem, 1.1rem + 0.7vw, 1.65rem);
+
+  --radius-ficha: 1.25rem;
+}
+
+/* ------------------------------------------------------------------ base */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Deja aire bajo el header fijo al saltar a un ancla */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-gasa);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    /* Nada debe desbordar horizontalmente en móvil */
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Foco visible y consistente en todo lo interactivo */
+  :focus-visible {
+    outline: 3px solid var(--color-ambar);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-ambar);
+    color: var(--color-tinta);
+  }
+
+  /* Los iframes (mapa) nunca deben forzar scroll lateral */
+  iframe {
+    max-width: 100%;
+  }
+}
+
+/* ---------------------------------------------------------- utilidades */
+
+@utility contenedor {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Patrón de huellas: textura de fondo, casi imperceptible. Es el mundo real
+   del sujeto, no una calcomanía: se mantiene por debajo del 6 % de opacidad. */
+@utility textura-huellas {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='190' viewBox='0 0 190 190'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cellipse cx='30' cy='34' rx='7' ry='9'/%3E%3Cellipse cx='16' cy='20' rx='4' ry='5.5' transform='rotate(-22 16 20)'/%3E%3Cellipse cx='27' cy='14' rx='4' ry='5.5' transform='rotate(-8 27 14)'/%3E%3Cellipse cx='38' cy='16' rx='4' ry='5.5' transform='rotate(10 38 16)'/%3E%3Cellipse cx='47' cy='25' rx='3.6' ry='5' transform='rotate(26 47 25)'/%3E%3Cellipse cx='128' cy='134' rx='7' ry='9'/%3E%3Cellipse cx='114' cy='120' rx='4' ry='5.5' transform='rotate(-22 114 120)'/%3E%3Cellipse cx='125' cy='114' rx='4' ry='5.5' transform='rotate(-8 125 114)'/%3E%3Cellipse cx='136' cy='116' rx='4' ry='5.5' transform='rotate(10 136 116)'/%3E%3Cellipse cx='145' cy='125' rx='3.6' ry='5' transform='rotate(26 145 125)'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Subrayado trazado a mano. Va como fondo repetido y no como SVG absoluto
+   para que siga al texto cuando la frase se parte en dos líneas: en móvil
+   un SVG de ancho fijo desbordaba el viewport. */
+@utility subrayado-mano {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='10' viewBox='0 0 48 10' preserveAspectRatio='none'%3E%3Cpath d='M1.5 6.6Q12 2.2 24 6.4T46.5 6.2' fill='none' stroke='%23e8a33d' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: left 100%;
+  background-size: 2.6em 0.3em;
+  padding-bottom: 0.22em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Filete punteado: la perforación de una cartilla de vacunación */
+@utility filete-perforado {
+  border-top: 2px dashed color-mix(in oklab, var(--color-eucalipto) 32%, transparent);
+}
+
+/* Etiqueta de dato: microcopia en mono, como el campo de un expediente */
+@utility etiqueta-dato {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------ componentes */
+
+@layer components {
+  /* --- FICHA: el elemento firma de la página --------------------------- */
+  .ficha {
+    position: relative;
+    background: #fff;
+    border: 1px solid color-mix(in oklab, var(--color-eucalipto) 18%, transparent);
+    border-radius: var(--radius-ficha);
+    /* Muesca superior izquierda: la pestaña de una carpeta de expediente */
+    box-shadow:
+      0 1px 2px rgb(13 59 58 / 0.05),
+      0 12px 28px -18px rgb(13 59 58 / 0.28);
+  }
+
+  /* La pestaña propiamente dicha */
+  .ficha-pestana::before {
+    content: '';
+    position: absolute;
+    inset-block-start: -0.6rem;
+    inset-inline-start: 1.75rem;
+    inline-size: 4.5rem;
+    block-size: 0.65rem;
+    background: var(--color-ambar);
+    border-radius: 0.35rem 0.35rem 0 0;
+  }
+
+  /* Sello de goma, ligeramente girado como si lo hubieran estampado a mano */
+  .sello {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border: 2px solid currentColor;
+    border-radius: 0.4rem;
+    rotate: -3deg;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  /* --- Botones --------------------------------------------------------- */
+  .boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    /* 48 px de alto mínimo: objetivo táctil cómodo */
+    min-block-size: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-align: center;
+    transition:
+      background-color 0.18s ease,
+      color 0.18s ease,
+      border-color 0.18s ease,
+      transform 0.18s ease,
+      box-shadow 0.18s ease;
+  }
+
+  .boton:active {
+    transform: translateY(1px);
+  }
+
+  .boton-primario {
+    background: var(--color-ambar);
+    color: var(--color-tinta);
+    box-shadow: 0 10px 22px -12px rgb(184 118 20 / 0.85);
+  }
+  .boton-primario:hover {
+    background: var(--color-ambar-hondo);
+    color: #fff;
+  }
+
+  .boton-oscuro {
+    background: var(--color-quirofano);
+    color: #fff;
+  }
+  .boton-oscuro:hover {
+    background: var(--color-eucalipto);
+  }
+
+  .boton-linea {
+    border: 2px solid color-mix(in oklab, var(--color-quirofano) 30%, transparent);
+    color: var(--color-quirofano);
+  }
+  .boton-linea:hover {
+    border-color: var(--color-quirofano);
+    background: var(--color-menta);
+  }
+
+  .boton-claro {
+    border: 2px solid rgb(255 255 255 / 0.45);
+    color: #fff;
+  }
+  .boton-claro:hover {
+    background: rgb(255 255 255 / 0.12);
+    border-color: #fff;
+  }
+
+  /* --- Carrusel de celular y tablet ------------------------------------
+     El arrastre, la inercia y el ajuste a cada tarjeta son del navegador:
+     scroll nativo + scroll-snap. El JS solo aporta el avance automatico. */
+  .pista-carrusel {
+    /* position:relative hace que el offsetLeft de cada hijo sea ya la
+       coordenada de scroll a la que hay que ir */
+    position: relative;
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline-start: 1.25rem;
+    padding-inline: 1.25rem;
+    /* sangra hasta el borde de la pantalla para que asome la tarjeta siguiente */
+    margin-inline: -1.25rem;
+    /* aire para que no se recorten sombras ni la pestaña de las fichas */
+    padding-block: 0.75rem;
+    scrollbar-width: none;
+  }
+
+  .pista-carrusel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pista-carrusel > * {
+    flex: 0 0 min(84%, 21rem);
+    scroll-snap-align: start;
+  }
+
+  @media (width >= 48rem) {
+    .pista-carrusel {
+      padding-inline: 2rem;
+      margin-inline: -2rem;
+      scroll-padding-inline-start: 2rem;
+    }
+  }
+
+  /* --- Formulario ------------------------------------------------------ */
+  .campo {
+    inline-size: 100%;
+    min-block-size: 3rem;
+    padding: 0.7rem 0.9rem;
+    background: #fff;
+    border: 1.5px solid color-mix(in oklab, var(--color-eucalipto) 28%, transparent);
+    border-radius: 0.7rem;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--color-tinta);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .campo::placeholder {
+    color: color-mix(in oklab, var(--color-tinta-suave) 70%, transparent);
+  }
+
+  .campo:hover {
+    border-color: var(--color-eucalipto);
+  }
+
+  /* :user-invalid sólo marca error DESPUÉS de que la persona interactúa,
+     nunca al cargar la página. */
+  .campo:user-invalid {
+    border-color: var(--color-urgencia);
+    background: color-mix(in oklab, var(--color-urgencia) 5%, #fff);
+  }
+
+  .error-campo {
+    display: none;
+    margin-block-start: 0.35rem;
+    color: var(--color-urgencia);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .campo:user-invalid ~ .error-campo {
+    display: block;
+  }
+}
+
+/* -------------------------------------------------------------- motion */
+
+/* Secuencia de entrada del hero. Se apoya en --i para escalonar los hijos. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes entrada {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+  }
+
+  .entrada {
+    animation: entrada 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+}
+
+/* Reveals al hacer scroll con animaciones scroll-driven nativas.
+   Son decorativas: donde no hay soporte (Firefox) el contenido simplemente
+   se ve, sin fallback en JS ni polyfill. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports ((animation-timeline: view()) and (animation-range: entry)) {
+    @keyframes revelar {
+      from {
+        opacity: 0;
+        transform: translateY(2.25rem);
+      }
+    }
+
+    .revelar {
+      animation: revelar auto linear backwards;
+      /* animation-timeline SIEMPRE después del atajo `animation` */
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}

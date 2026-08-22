@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es-PE">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0d3b3a" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Fuentes: preconnect a los dos hosts para adelantar el handshake -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400..700&display=swap"
+    />
+
+    <!-- title, description, Open Graph y JSON-LD se inyectan en el build
+         desde src/data/clinica.js (ver el plugin en vite.config.js) -->
+    <title>San Antón · Clínica Veterinaria</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui">
+        Para ver esta página necesitas activar JavaScript. Mientras tanto puedes
+        llamarnos al <a href="tel:{{TELEFONO_TEL}}">{{TELEFONO_VISIBLE}}</a>.
+      </p>
+    </noscript>
+  </body>
+</html>

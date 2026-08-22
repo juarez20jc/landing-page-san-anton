@@ -1,0 +1,10 @@
+node_modules
+dist
+.DS_Store
+*.local
+scripts/.capturas
+
+# Salidas regenerables del lienzo de diseño
+diseno/_guardado/
+diseno/landing-petcare.html
+diseno/.rev-*.png

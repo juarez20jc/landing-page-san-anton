@@ -1,0 +1,32 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 7960, "title": "Escritorio · 1440", "print": "flow" },
+    { "file": "Movil.dc.html", "x": 1580, "y": 0, "w": 390, "h": 4100, "title": "Móvil 1 · hero y servicios", "print": "flow" },
+    { "file": "MovilMedio.dc.html", "x": 2090, "y": 0, "w": 390, "h": 5590, "title": "Móvil 2 · clínica, equipo y reseñas", "print": "flow" },
+    { "file": "MovilFin.dc.html", "x": 2600, "y": 0, "w": 390, "h": 5070, "title": "Móvil 3 · horarios, contacto y pie", "print": "flow" }
+  ],
+  "annotations": [
+    {
+      "id": "tweaks",
+      "x": 0,
+      "y": -300,
+      "w": 460,
+      "text": "Los dos chips de color de arriba retematizan las cuatro pantallas:\n\nACENTO — el ámbar. Botones, pestañas de las fichas, sellos, el subrayado del titular y las cifras.\nMARCA — el verde quirófano. Hero, reseñas, pie y todos los títulos.\n\nEl resto se edita a mano: clic en cualquier elemento para el panel de propiedades, doble clic sobre un texto para reescribirlo."
+    },
+    {
+      "id": "movil",
+      "x": 500,
+      "y": -300,
+      "w": 440,
+      "text": "El móvil va en tres pantallas seguidas porque un artboard no puede pasar de 8000 px de alto y la página completa a 390 px mide unos 14 600.\n\nSe leen de izquierda a derecha: es un único scroll partido en tres, no tres pantallas distintas."
+    },
+    {
+      "id": "difs",
+      "x": 980,
+      "y": -300,
+      "w": 440,
+      "text": "Dos cosas que no son iguales que en la web real:\n\n· El mapa es un dibujo. Google Maps no carga dentro del lienzo, así que va un marcador con el mismo encuadre.\n· El estado «Abierto hasta las 18:00 h» está congelado. En la página se calcula con la hora de quien entra."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}

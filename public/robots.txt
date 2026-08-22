@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://juarez20jc.github.io/landing-page-san-anton/sitemap.xml

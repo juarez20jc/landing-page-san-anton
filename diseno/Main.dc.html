@@ -1,0 +1,776 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400..700&display=swap">
+  <style>
+    body { margin: 0; font-family: 'Instrument Sans', system-ui, sans-serif; color: #122220; }
+    * { box-sizing: border-box; }
+    a { color: #96600f; text-decoration: none; }
+    a:hover { color: #122220; }
+    h1, h2, h3, h4 { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; margin: 0; }
+    p { margin: 0; text-wrap: pretty; }
+    ul { margin: 0; padding: 0; list-style: none; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; min-height: 100vh; display: flex; flex-direction: column; background: #f4f7f4;">
+
+  <!-- ================================================== HEADER -->
+  <div style="display: flex; align-items: center; height: 73px; background: #f4f7f4; border-bottom: 1px solid rgba(30, 92, 87, 0.15);">
+    <div style="width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <svg viewBox="0 0 32 32" style="width: 36px; height: 36px; flex-shrink: 0;">
+          <rect x="1.5" y="4.5" width="29" height="25" rx="6" fill="{{marca}}"></rect>
+          <rect x="7" y="2.5" width="11" height="4" rx="2" fill="{{marca}}"></rect>
+          <g fill="{{acento}}">
+            <ellipse cx="16" cy="20.6" rx="4.5" ry="3.9"></ellipse>
+            <ellipse cx="9.9" cy="14.6" rx="2.3" ry="3" transform="rotate(-20 9.9 14.6)"></ellipse>
+            <ellipse cx="14.2" cy="11.6" rx="2.3" ry="3" transform="rotate(-7 14.2 11.6)"></ellipse>
+            <ellipse cx="18.6" cy="11.8" rx="2.3" ry="3" transform="rotate(8 18.6 11.8)"></ellipse>
+            <ellipse cx="22.6" cy="14.9" rx="2.1" ry="2.8" transform="rotate(22 22.6 14.9)"></ellipse>
+          </g>
+        </svg>
+        <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">PetCare</span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <a href="#" style="padding: 8px 14px; border-radius: 999px; font-size: 15.2px; font-weight: 500; color: #4a5f5b;">Servicios</a>
+        <a href="#" style="padding: 8px 14px; border-radius: 999px; font-size: 15.2px; font-weight: 500; color: #4a5f5b;">La clínica</a>
+        <a href="#" style="padding: 8px 14px; border-radius: 999px; font-size: 15.2px; font-weight: 500; color: #4a5f5b;">Equipo</a>
+        <a href="#" style="padding: 8px 14px; border-radius: 999px; font-size: 15.2px; font-weight: 500; color: #4a5f5b;">Reseñas</a>
+        <a href="#" style="padding: 8px 14px; border-radius: 999px; font-size: 15.2px; font-weight: 500; color: #4a5f5b;">Horarios</a>
+        <a href="#" style="padding: 8px 14px; border-radius: 999px; font-size: 15.2px; font-weight: 500; color: #4a5f5b;">Contacto</a>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 8px; border: 1px solid rgba(30, 92, 87, 0.2); border-radius: 999px; padding: 6px 14px 6px 12px;">
+          <span style="width: 8px; height: 8px; border-radius: 999px; background: #10b981;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #4a5f5b;">Abierto hasta las 18:00 h</span>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 2px solid rgba(13, 59, 58, 0.2); color: {{marca}};">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M6.3 3h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.9 5.9l1.4-1.9L20 13.7v3a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.3 5.2 2 2 0 0 1 6.3 3z"></path></svg>
+        </div>
+        <a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 20px; border-radius: 999px; background: {{acento}}; color: #122220; font-size: 15.2px; font-weight: 600;">Reservar cita</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================================================== HERO -->
+  <div style="position: relative; overflow: hidden; background: {{marca}}; color: #ffffff;">
+    <div style="position: absolute; inset: 0; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='190' viewBox='0 0 190 190'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cellipse cx='30' cy='34' rx='7' ry='9'/%3E%3Cellipse cx='16' cy='20' rx='4' ry='5.5' transform='rotate(-22 16 20)'/%3E%3Cellipse cx='27' cy='14' rx='4' ry='5.5' transform='rotate(-8 27 14)'/%3E%3Cellipse cx='38' cy='16' rx='4' ry='5.5' transform='rotate(10 38 16)'/%3E%3Cellipse cx='47' cy='25' rx='3.6' ry='5' transform='rotate(26 47 25)'/%3E%3Cellipse cx='128' cy='134' rx='7' ry='9'/%3E%3Cellipse cx='114' cy='120' rx='4' ry='5.5' transform='rotate(-22 114 120)'/%3E%3Cellipse cx='125' cy='114' rx='4' ry='5.5' transform='rotate(-8 125 114)'/%3E%3Cellipse cx='136' cy='116' rx='4' ry='5.5' transform='rotate(10 136 116)'/%3E%3Cellipse cx='145' cy='125' rx='3.6' ry='5' transform='rotate(26 145 125)'/%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+    <div style="position: absolute; right: -160px; top: -224px; width: 608px; height: 608px; border-radius: 999px; background: rgba(232, 163, 61, 0.12); filter: blur(64px);"></div>
+
+    <div style="position: relative; width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 32px;">
+      <div style="display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; padding: 96px 0;">
+
+        <!-- texto -->
+        <div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;">
+            <span style="border-radius: 999px; background: rgba(232, 163, 61, 0.15); padding: 6px 12px; color: {{acento}};">Urgencias 24/7</span>
+            <span style="color: rgba(217, 234, 227, 0.7);">Col. Del Valle · CDMX</span>
+          </div>
+
+          <h1 style="margin-top: 20px; font-size: 68px; color: #ffffff;">El veterinario al que tu perro entra <span style="position: relative; white-space: nowrap;">sin jalar la correa<svg viewBox="0 0 300 12" preserveAspectRatio="none" style="position: absolute; left: 0; bottom: -6px; width: 100%; height: 14px;"><path d="M2 8.5c60-5 110-6.5 148-6 38 .5 92 2.5 148 6.5" fill="none" stroke="{{acento}}" stroke-width="4" stroke-linecap="round"></path></svg></span></h1>
+
+          <p style="margin-top: 28px; max-width: 576px; font-size: 26.4px; line-height: 1.625; color: #d9eae3;">Consulta, vacunación, cirugía, estética y laboratorio en Del Valle, con urgencias las 24 horas. Catorce años y doce mil pacientes después, seguimos atendiendo sin prisas.</p>
+
+          <div style="display: flex; gap: 12px; margin-top: 36px;">
+            <a href="#" style="display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 12px 24px; border-radius: 999px; background: {{acento}}; color: #122220; font-size: 16px; font-weight: 600;">Reservar cita</a>
+            <a href="#" style="display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 12px 24px; border-radius: 999px; border: 2px solid rgba(255, 255, 255, 0.45); color: #ffffff; font-size: 16px; font-weight: 600;">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M12.04 2A9.9 9.9 0 0 0 2.15 11.9a9.8 9.8 0 0 0 1.36 4.98L2 22l5.27-1.47a9.9 9.9 0 0 0 4.77 1.21h.01A9.9 9.9 0 0 0 21.94 11.9 9.9 9.9 0 0 0 12.04 2zm0 18.05h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.87.84-3.05-.2-.31a8.2 8.2 0 1 1 6.99 3.82zm4.51-6.15c-.25-.13-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12s-.63.8-.77.96-.28.19-.53.06a6.72 6.72 0 0 1-3.36-2.94c-.25-.43.25-.4.72-1.34a.45.45 0 0 0-.02-.43c-.06-.13-.55-1.34-.76-1.83s-.4-.42-.55-.43h-.47a.9.9 0 0 0-.65.3 2.75 2.75 0 0 0-.86 2.05 4.79 4.79 0 0 0 1 2.54 10.94 10.94 0 0 0 4.2 3.71c1.56.67 2.17.73 2.95.61a2.5 2.5 0 0 0 1.65-1.17 2.05 2.05 0 0 0 .14-1.16c-.06-.11-.22-.17-.47-.29z"></path></svg>
+              Escribir por WhatsApp
+            </a>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 32px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="display: flex; gap: 2px; color: {{acento}};">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              </div>
+              <span style="font-size: 14px; color: #d9eae3;"><strong style="font-weight: 600; color: #ffffff;">4.9</strong> de 380 reseñas</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 14px; color: #d9eae3;">
+              <span style="width: 8px; height: 8px; border-radius: 999px; background: #34d399;"></span>
+              Abierto hasta las 18:00 h
+            </div>
+          </div>
+        </div>
+
+        <!-- ficha con foto -->
+        <div style="position: relative;">
+          <div style="position: relative; background: rgba(30, 92, 87, 0.4); border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 10px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+            <div style="position: absolute; top: -9.6px; left: 28px; width: 72px; height: 10.4px; background: {{acento}}; border-radius: 6px 6px 0 0;"></div>
+            <img src="hero.webp" alt="Una veterinaria de PetCare sostiene con calma a un golden retriever" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 13.6px;">
+          </div>
+
+          <div style="position: absolute; bottom: -24px; left: -40px; width: 264px; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 16px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #4a5f5b;">Siguiente hueco libre</p>
+            <p style="margin-top: 6px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">Hoy · 17:30 h</p>
+            <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 12px 0;"></div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4a5f5b;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="{{acento}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;"><path d="m4.5 12.8 4.6 4.4L19.5 6.8"></path></svg>
+                Sin sala de espera llena
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 8px; font-size: 14px; color: #4a5f5b;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="{{acento}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;"><path d="m4.5 12.8 4.6 4.4L19.5 6.8"></path></svg>
+                Confirmación por WhatsApp
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- cifras -->
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 16px; overflow: hidden; background: rgba(255, 255, 255, 0.12);">
+        <div style="background: {{marca}}; padding: 24px 20px;">
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 700; letter-spacing: -0.025em; color: {{acento}};">14<span style="font-size: 24px;"> años</span></div>
+          <div style="margin-top: 4px; font-size: 14px; color: rgba(217, 234, 227, 0.85);">cuidando mascotas del barrio</div>
+        </div>
+        <div style="background: {{marca}}; padding: 24px 20px;">
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 700; letter-spacing: -0.025em; color: {{acento}};">12<span style="font-size: 24px;"> mil</span></div>
+          <div style="margin-top: 4px; font-size: 14px; color: rgba(217, 234, 227, 0.85);">pacientes en el historial</div>
+        </div>
+        <div style="background: {{marca}}; padding: 24px 20px;">
+          <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 700; letter-spacing: -0.025em; color: {{acento}};">4.9<span style="font-size: 24px;">/5</span></div>
+          <div style="margin-top: 4px; font-size: 14px; color: rgba(217, 234, 227, 0.85);">promedio de 380 reseñas</div>
+        </div>
+      </div>
+      <div style="height: 64px;"></div>
+    </div>
+  </div>
+
+  <!-- =============================================== SERVICIOS -->
+  <div style="padding: 112px 0; background: #f4f7f4;">
+    <div style="width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 32px;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px;">
+        <div style="max-width: 672px;">
+          <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;"><span style="display: inline-block; width: 28px; height: 1px; background: #1e5c57;"></span>Qué hacemos</p>
+          <h2 style="font-size: 54.4px; color: {{marca}};">Todo lo que tu mascota necesita, bajo el mismo techo</h2>
+          <p style="margin-top: 16px; font-size: 18px; line-height: 1.625; color: #4a5f5b;">Sin derivaciones a otra clínica ni esperas de tres días por un análisis. El quirófano, el laboratorio y los rayos X están en el mismo consultorio donde te atendemos.</p>
+        </div>
+        <a href="#" style="display: inline-flex; align-items: center; justify-content: center; gap: 9px; flex-shrink: 0; min-height: 48px; padding: 12px 24px; border-radius: 999px; border: 2px solid rgba(13, 59, 58, 0.3); color: {{marca}}; font-size: 16px; font-weight: 600;">
+          Reservar cita
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M4.5 12h15M13.5 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 48px;">
+
+        <div style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; padding: 24px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 16px; background: #d9eae3; color: {{marca}};">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;"><path d="M6.5 3.6V8a5.5 5.5 0 0 0 11 0V3.6"></path><circle cx="6.5" cy="2.8" r="1.3"></circle><circle cx="17.5" cy="2.8" r="1.3"></circle><path d="M12 13.5v2.3a3.7 3.7 0 0 0 3.7 3.7h.6"></path><circle cx="18.7" cy="19.5" r="2.3"></circle></svg>
+          </span>
+          <h3 style="margin-top: 20px; font-size: 20px; color: {{marca}};">Consulta general</h3>
+          <p style="margin-top: 10px; flex: 1; line-height: 1.625; color: #4a5f5b;">Revisión completa, diagnóstico y plan de tratamiento. Cuarenta minutos sin prisas para resolver todas tus dudas.</p>
+          <p style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(30, 92, 87, 0.12); font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Desde $450</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; padding: 24px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 16px; background: #d9eae3; color: {{marca}};">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;"><rect x="9" y="6.4" width="6" height="10.8" rx="1.1"></rect><path d="M12 2.4v4M9.7 2.4h4.6M7.8 6.4h8.4"></path><path d="M10.3 9.2h1.6M10.3 11.6h1.6M10.3 14h1.6"></path><path d="M12 17.2v4.4"></path></svg>
+          </span>
+          <h3 style="margin-top: 20px; font-size: 20px; color: {{marca}};">Vacunación y desparasitación</h3>
+          <p style="margin-top: 10px; flex: 1; line-height: 1.625; color: #4a5f5b;">Esquema completo para cachorros y refuerzos anuales, con recordatorio automático por WhatsApp.</p>
+          <p style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(30, 92, 87, 0.12); font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Cartilla digital incluida</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; padding: 24px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 16px; background: #d9eae3; color: {{marca}};">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;"><path d="M21 3a1.9 1.9 0 0 1 0 2.7l-8.3 8.3-2.7-2.7L18.3 3A1.9 1.9 0 0 1 21 3z"></path><path d="m10 11.3-5.9 5.9a1.6 1.6 0 0 0 0 2.2l.5.5a1.6 1.6 0 0 0 2.2 0l5.9-5.9"></path><path d="M3.4 5.1c2.2 1.7 4.4 1.7 6.6 0" stroke-dasharray="1.6 2.2"></path></svg>
+          </span>
+          <h3 style="margin-top: 20px; font-size: 20px; color: {{marca}};">Cirugía y esterilización</h3>
+          <p style="margin-top: 10px; flex: 1; line-height: 1.625; color: #4a5f5b;">Quirófano propio con monitorización continua, anestesia inhalada y hospitalización posoperatoria.</p>
+          <p style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(30, 92, 87, 0.12); font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Alta el mismo día</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; background: rgba(176, 58, 50, 0.06); border: 1px solid rgba(176, 58, 50, 0.25); border-radius: 20px; padding: 24px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 16px; background: rgba(176, 58, 50, 0.12); color: #b03a32;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;"><circle cx="10.8" cy="13.4" r="7.8"></circle><path d="M10.8 8.6v4.8l3.4 2"></path><path d="M19.4 2.2v5.2M16.8 4.8H22"></path></svg>
+          </span>
+          <h3 style="margin-top: 20px; font-size: 20px; color: {{marca}};">Urgencias 24 horas</h3>
+          <p style="margin-top: 10px; flex: 1; line-height: 1.625; color: #4a5f5b;">Atención inmediata los 365 días del año. Estabilizamos, diagnosticamos y te explicamos cada paso.</p>
+          <p style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(176, 58, 50, 0.2); font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #b03a32;">Sin cita previa</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; padding: 24px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 16px; background: #d9eae3; color: {{marca}};">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;"><rect x="2.8" y="4.6" width="12.6" height="6" rx="3"></rect><path d="M6 10.6v3M9 10.6v3.6M12.2 10.6v3"></path><path d="M15.4 7.6h2.4A2.9 2.9 0 0 1 20.7 10.5v2.6"></path><path d="M20.7 15.1c1 1.4 1.5 2.3 1.5 3.1a1.5 1.5 0 0 1-3 0c0-.8.5-1.7 1.5-3.1z"></path></svg>
+          </span>
+          <h3 style="margin-top: 20px; font-size: 20px; color: {{marca}};">Estética canina y felina</h3>
+          <p style="margin-top: 10px; flex: 1; line-height: 1.625; color: #4a5f5b;">Baño medicado, corte por raza y cuidado dental. Manejo libre de estrés, sin jaulas de secado.</p>
+          <p style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(30, 92, 87, 0.12); font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Perros y gatos</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; padding: 24px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 16px; background: #d9eae3; color: {{marca}};">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;"><path d="M8.6 2.6h6.8"></path><path d="M9.9 2.6v14a2.6 2.6 0 0 0 5.2 0v-14"></path><path d="M9.9 11.4h5.2"></path><circle cx="11.7" cy="14" r="0.75"></circle><circle cx="13.6" cy="16.2" r="0.55"></circle></svg>
+          </span>
+          <h3 style="margin-top: 20px; font-size: 20px; color: {{marca}};">Laboratorio e imagen</h3>
+          <p style="margin-top: 10px; flex: 1; line-height: 1.625; color: #4a5f5b;">Análisis clínicos, rayos X digitales y ultrasonido en sitio. Resultados el mismo día.</p>
+          <p style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(30, 92, 87, 0.12); font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Resultados en 2 h</p>
+        </div>
+
+      </div>
+
+      <p style="margin-top: 32px; text-align: center; color: #4a5f5b;">¿No sabes qué necesita tu mascota? <a href="#" style="font-weight: 600; color: {{marca}}; text-decoration: underline; text-decoration-color: {{acento}}; text-decoration-thickness: 2px; text-underline-offset: 4px;">Cuéntanos por WhatsApp</a> y te decimos.</p>
+    </div>
+  </div>
+
+  <!-- ================================================= CLÍNICA -->
+  <div style="padding: 112px 0; background: rgba(217, 234, 227, 0.5);">
+    <div style="width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: center;">
+
+      <div style="position: relative;">
+        <div style="position: relative; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 10px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="position: absolute; top: -9.6px; left: 28px; width: 72px; height: 10.4px; background: {{acento}}; border-radius: 6px 6px 0 0;"></div>
+          <img src="clinica.webp" alt="Recepción de PetCare con mostrador de madera, plantas y pared verde" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 13.6px;">
+        </div>
+        <span style="position: absolute; bottom: -16px; right: 20px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border: 2px solid {{marca}}; border-radius: 6.4px; rotate: -3deg; background: #f4f7f4; color: {{marca}}; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.9;">Desde 2011</span>
+      </div>
+
+      <div>
+        <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;"><span style="display: inline-block; width: 28px; height: 1px; background: #1e5c57;"></span>La clínica</p>
+        <h2 style="font-size: 54.4px; color: {{marca}};">Una clínica de barrio con equipo de hospital</h2>
+        <p style="margin-top: 16px; font-size: 18px; line-height: 1.625; color: #4a5f5b;">Abrimos en 2011 en un local de cuarenta metros con un solo veterinario. Hoy somos un equipo de once personas, tenemos quirófano, laboratorio y hospitalización propios, y seguimos en la misma esquina de Del Valle.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 40px;">
+          <div>
+            <div style="display: flex; align-items: flex-start; gap: 10px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">
+              <svg viewBox="0 0 24 24" fill="none" stroke="{{acento}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 4px;"><path d="m4.5 12.8 4.6 4.4L19.5 6.8"></path></svg>
+              Consultas de cuarenta minutos
+            </div>
+            <p style="margin-top: 6px; padding-left: 30px; color: #4a5f5b;">Agendamos menos pacientes por hora a propósito, para que nadie salga con dudas.</p>
+          </div>
+          <div>
+            <div style="display: flex; align-items: flex-start; gap: 10px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">
+              <svg viewBox="0 0 24 24" fill="none" stroke="{{acento}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 4px;"><path d="m4.5 12.8 4.6 4.4L19.5 6.8"></path></svg>
+              Manejo libre de estrés
+            </div>
+            <p style="margin-top: 6px; padding-left: 30px; color: #4a5f5b;">Salas separadas para perros y gatos, feromonas, y nada de sujeción a la fuerza.</p>
+          </div>
+          <div>
+            <div style="display: flex; align-items: flex-start; gap: 10px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">
+              <svg viewBox="0 0 24 24" fill="none" stroke="{{acento}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 4px;"><path d="m4.5 12.8 4.6 4.4L19.5 6.8"></path></svg>
+              Presupuesto antes de empezar
+            </div>
+            <p style="margin-top: 6px; padding-left: 30px; color: #4a5f5b;">Te decimos cuánto cuesta y qué incluye antes de hacer cualquier estudio.</p>
+          </div>
+          <div>
+            <div style="display: flex; align-items: flex-start; gap: 10px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">
+              <svg viewBox="0 0 24 24" fill="none" stroke="{{acento}}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 4px;"><path d="m4.5 12.8 4.6 4.4L19.5 6.8"></path></svg>
+              Historial siempre disponible
+            </div>
+            <p style="margin-top: 6px; padding-left: 30px; color: #4a5f5b;">Expediente digital con vacunas, análisis y radiografías, que puedes pedir cuando quieras.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================== EQUIPO -->
+  <div style="padding: 112px 0; background: #f4f7f4;">
+    <div style="width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 32px;">
+      <div style="max-width: 672px;">
+        <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;"><span style="display: inline-block; width: 28px; height: 1px; background: #1e5c57;"></span>Quién te atiende</p>
+        <h2 style="font-size: 54.4px; color: {{marca}};">Las mismas caras cada vez que vienes</h2>
+        <p style="margin-top: 16px; font-size: 18px; line-height: 1.625; color: #4a5f5b;">No rotamos veterinarios entre sucursales. Tu mascota ve siempre al mismo médico, que conoce su historial de memoria.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 48px;">
+
+        <div style="position: relative; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="position: absolute; top: -9.6px; left: 28px; width: 72px; height: 10.4px; background: {{acento}}; border-radius: 6px 6px 0 0;"></div>
+          <img src="equipo-1.webp" alt="La Dra. Mariana Robles, directora médica de PetCare" style="display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 18.4px 18.4px 0 0;">
+          <div style="padding: 20px;">
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #96600f;">Directora médica</p>
+            <h3 style="margin-top: 6px; font-size: 18px; color: {{marca}};">Dra. Mariana Robles</h3>
+            <p style="margin-top: 6px; font-size: 14px; line-height: 1.625; color: #4a5f5b;">Medicina interna de pequeñas especies</p>
+            <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 16px 0;"></div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4a5f5b;">
+              <div><div style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Cédula</div><div style="margin-top: 2px;">7 482 913</div></div>
+              <div><div style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Ejercicio</div><div style="margin-top: 2px;">14 años</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: relative; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="position: absolute; top: -9.6px; left: 28px; width: 72px; height: 10.4px; background: {{acento}}; border-radius: 6px 6px 0 0;"></div>
+          <img src="equipo-2.webp" alt="El MVZ Daniel Alcántara, cirujano de PetCare" style="display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 18.4px 18.4px 0 0;">
+          <div style="padding: 20px;">
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #96600f;">Cirujano</p>
+            <h3 style="margin-top: 6px; font-size: 18px; color: {{marca}};">MVZ Daniel Alcántara</h3>
+            <p style="margin-top: 6px; font-size: 14px; line-height: 1.625; color: #4a5f5b;">Cirugía de tejidos blandos y ortopedia</p>
+            <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 16px 0;"></div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4a5f5b;">
+              <div><div style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Cédula</div><div style="margin-top: 2px;">8 105 664</div></div>
+              <div><div style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Ejercicio</div><div style="margin-top: 2px;">11 años</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: relative; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="position: absolute; top: -9.6px; left: 28px; width: 72px; height: 10.4px; background: {{acento}}; border-radius: 6px 6px 0 0;"></div>
+          <img src="equipo-3.webp" alt="La MVZ Paola Núñez, especialista en felinos, con un gato" style="display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 18.4px 18.4px 0 0;">
+          <div style="padding: 20px;">
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #96600f;">Especialista en felinos</p>
+            <h3 style="margin-top: 6px; font-size: 18px; color: {{marca}};">MVZ Paola Núñez</h3>
+            <p style="margin-top: 6px; font-size: 14px; line-height: 1.625; color: #4a5f5b;">Medicina felina y manejo libre de estrés</p>
+            <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 16px 0;"></div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4a5f5b;">
+              <div><div style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Cédula</div><div style="margin-top: 2px;">9 331 208</div></div>
+              <div><div style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Ejercicio</div><div style="margin-top: 2px;">8 años</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: relative; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="position: absolute; top: -9.6px; left: 28px; width: 72px; height: 10.4px; background: {{acento}}; border-radius: 6px 6px 0 0;"></div>
+          <img src="equipo-4.webp" alt="El MVZ Sergio Peralta, responsable de urgencias de PetCare" style="display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 18.4px 18.4px 0 0;">
+          <div style="padding: 20px;">
+            <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #96600f;">Guardia de urgencias</p>
+            <h3 style="margin-top: 6px; font-size: 18px; color: {{marca}};">MVZ Sergio Peralta</h3>
+            <p style="margin-top: 6px; font-size: 14px; line-height: 1.625; color: #4a5f5b;">Medicina de urgencias y cuidados intensivos</p>
+            <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 16px 0;"></div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4a5f5b;">
+              <div><div style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Cédula</div><div style="margin-top: 2px;">8 774 520</div></div>
+              <div><div style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Ejercicio</div><div style="margin-top: 2px;">10 años</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================= TESTIMONIOS -->
+  <div style="position: relative; overflow: hidden; padding: 112px 0; background: {{marca}}; color: #ffffff;">
+    <div style="position: absolute; inset: 0; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='190' viewBox='0 0 190 190'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cellipse cx='30' cy='34' rx='7' ry='9'/%3E%3Cellipse cx='16' cy='20' rx='4' ry='5.5' transform='rotate(-22 16 20)'/%3E%3Cellipse cx='27' cy='14' rx='4' ry='5.5' transform='rotate(-8 27 14)'/%3E%3Cellipse cx='38' cy='16' rx='4' ry='5.5' transform='rotate(10 38 16)'/%3E%3Cellipse cx='47' cy='25' rx='3.6' ry='5' transform='rotate(26 47 25)'/%3E%3Cellipse cx='128' cy='134' rx='7' ry='9'/%3E%3Cellipse cx='114' cy='120' rx='4' ry='5.5' transform='rotate(-22 114 120)'/%3E%3Cellipse cx='125' cy='114' rx='4' ry='5.5' transform='rotate(-8 125 114)'/%3E%3Cellipse cx='136' cy='116' rx='4' ry='5.5' transform='rotate(10 136 116)'/%3E%3Cellipse cx='145' cy='125' rx='3.6' ry='5' transform='rotate(26 145 125)'/%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+
+    <div style="position: relative; width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 32px;">
+      <div style="max-width: 672px;">
+        <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{acento}};"><span style="display: inline-block; width: 28px; height: 1px; background: {{acento}};"></span>Lo que dicen</p>
+        <h2 style="font-size: 54.4px; color: #ffffff;">380 reseñas y un promedio de 4.9</h2>
+        <p style="margin-top: 16px; font-size: 18px; line-height: 1.625; color: #d9eae3;">Estas son de las que nos gusta releer cuando el turno se pone largo.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 48px;">
+
+        <div style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 24px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; gap: 2px; color: {{acento}};">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+            </div>
+            <span style="flex-shrink: 0; display: inline-flex; padding: 5px 11px; border: 2px solid rgba(30, 92, 87, 0.4); border-radius: 6.4px; rotate: -3deg; color: #1e5c57; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.9;">Urgencias 24 h</span>
+          </div>
+          <p style="margin-top: 16px; flex: 1; font-size: 18px; line-height: 1.625; color: #122220;">«Llegamos a las tres de la mañana con Nube intoxicada y nos atendieron en cinco minutos. Nos explicaron todo con calma y nos llamaron dos veces al día siguiente para ver cómo seguía.»</p>
+          <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 20px 0;"></div>
+          <div>
+            <p style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">Andrea Villalobos</p>
+            <p style="margin-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #4a5f5b;">Nube, gata común europea</p>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 24px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; gap: 2px; color: {{acento}};">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+            </div>
+            <span style="flex-shrink: 0; display: inline-flex; padding: 5px 11px; border: 2px solid rgba(30, 92, 87, 0.4); border-radius: 6.4px; rotate: -3deg; color: #1e5c57; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.9;">Consulta general</span>
+          </div>
+          <p style="margin-top: 16px; flex: 1; font-size: 18px; line-height: 1.625; color: #122220;">«Mi labrador le tenía pánico al veterinario. Aquí lo dejaron olfatear el consultorio, se sentaron en el piso con él y salió moviendo la cola. Nunca había visto algo así.»</p>
+          <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 20px 0;"></div>
+          <div>
+            <p style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">Ricardo Mena</p>
+            <p style="margin-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #4a5f5b;">Tomás, labrador de 6 años</p>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 24px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; gap: 2px; color: {{acento}};">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+            </div>
+            <span style="flex-shrink: 0; display: inline-flex; padding: 5px 11px; border: 2px solid rgba(30, 92, 87, 0.4); border-radius: 6.4px; rotate: -3deg; color: #1e5c57; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.9;">Cirugía</span>
+          </div>
+          <p style="margin-top: 16px; flex: 1; font-size: 18px; line-height: 1.625; color: #122220;">«La esterilización de Frida fue por la mañana y a las siete de la tarde ya estaba en casa comiendo. Me mandaron las indicaciones por WhatsApp con foto de la herida para comparar.»</p>
+          <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 20px 0;"></div>
+          <div>
+            <p style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">Lucía Ferrer</p>
+            <p style="margin-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #4a5f5b;">Frida, french poodle</p>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 24px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; gap: 2px; color: {{acento}};">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="m12 2.8 2.7 5.9 6.4.7-4.8 4.3 1.3 6.3-5.6-3.2-5.6 3.2 1.3-6.3-4.8-4.3 6.4-.7z"></path></svg>
+            </div>
+            <span style="flex-shrink: 0; display: inline-flex; padding: 5px 11px; border: 2px solid rgba(30, 92, 87, 0.4); border-radius: 6.4px; rotate: -3deg; color: #1e5c57; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.9;">Medicina preventiva</span>
+          </div>
+          <p style="margin-top: 16px; flex: 1; font-size: 18px; line-height: 1.625; color: #122220;">«Llevo cuatro años trayendo a mis dos perros. Tienen el historial completo, me avisan de las vacunas antes que yo me acuerde y jamás me han vendido un estudio que no necesitaran.»</p>
+          <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 20px 0;"></div>
+          <div>
+            <p style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">Jorge Ibarra</p>
+            <p style="margin-top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #4a5f5b;">Kuma y Lupe, huskies</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================ HORARIOS -->
+  <div style="padding: 112px 0; background: rgba(217, 234, 227, 0.5);">
+    <div style="width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px;">
+
+      <div>
+        <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;"><span style="display: inline-block; width: 28px; height: 1px; background: #1e5c57;"></span>Cuándo venir</p>
+        <h2 style="font-size: 54.4px; color: {{marca}};">Horarios de atención</h2>
+
+        <div style="margin-top: 32px; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 28px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+            <p style="display: flex; align-items: center; gap: 10px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.025em; color: {{marca}};">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1e5c57" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="9"></circle><path d="M12 6.8V12l3.6 2.2"></path></svg>
+              Consulta con cita
+            </p>
+            <span style="display: inline-flex; padding: 5px 11px; border: 2px solid #047857; border-radius: 6.4px; rotate: -3deg; color: #047857; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.9;">Abierto ahora</span>
+          </div>
+
+          <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 20px 0;"></div>
+
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 14px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(30, 92, 87, 0.1); color: #4a5f5b;">
+              <span style="font-weight: 500;">Lunes a viernes</span>
+              <span style="font-variant-numeric: tabular-nums;">08:00 – 20:00 h</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(30, 92, 87, 0.1); color: {{marca}};">
+              <span style="display: flex; align-items: center; gap: 8px; font-weight: 500;"><span style="width: 6px; height: 6px; border-radius: 999px; background: {{acento}};"></span>Sábado</span>
+              <span style="font-variant-numeric: tabular-nums;">09:00 – 18:00 h</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; color: #4a5f5b;">
+              <span style="font-weight: 500;">Domingo</span>
+              <span style="font-variant-numeric: tabular-nums;">10:00 – 14:00 h</span>
+            </div>
+          </div>
+
+          <p style="margin-top: 20px; border-radius: 12px; background: #d9eae3; padding: 12px 16px; font-size: 14px; color: #1e5c57;">Abierto hasta las 18:00 h. Los días festivos atendemos con horario de domingo.</p>
+        </div>
+      </div>
+
+      <div style="position: relative; overflow: hidden; border-radius: 20px; background: {{marca}}; color: #ffffff; min-height: 460px;">
+        <img src="urgencias.webp" alt="Un veterinario de guardia revisa a un perro pequeño en urgencias" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.75;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to top, {{marca}} 0%, rgba(13, 59, 58, 0.88) 50%, rgba(13, 59, 58, 0.15) 100%);"></div>
+        <div style="position: relative; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; min-height: 460px; padding: 36px;">
+          <span style="align-self: flex-start; display: inline-flex; padding: 5px 11px; border: 2px solid #b03a32; border-radius: 6.4px; rotate: -3deg; background: #b03a32; color: #ffffff; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.9;">Guardia activa</span>
+          <h3 style="margin-top: 20px; font-size: 54.4px; color: #ffffff;">Urgencias 24/7</h3>
+          <p style="margin-top: 12px; max-width: 448px; line-height: 1.625; color: #d9eae3;">Fuera de horario siempre hay un veterinario de guardia. Llama antes de venir y te esperamos preparados.</p>
+          <div style="display: flex; gap: 12px; margin-top: 28px;">
+            <a href="#" style="display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 12px 24px; border-radius: 999px; background: {{acento}}; color: #122220; font-size: 16px; font-weight: 600;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M6.3 3h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.9 5.9l1.4-1.9L20 13.7v3a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.3 5.2 2 2 0 0 1 6.3 3z"></path></svg>
+              +51 919 550 076
+            </a>
+            <a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border-radius: 999px; border: 2px solid rgba(255, 255, 255, 0.45); color: #ffffff; font-size: 16px; font-weight: 600;">Avisar por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================================================ CONTACTO -->
+  <div style="padding: 112px 0; background: #f4f7f4;">
+    <div style="width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 32px;">
+      <div style="max-width: 672px;">
+        <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;"><span style="display: inline-block; width: 28px; height: 1px; background: #1e5c57;"></span>Dónde estamos</p>
+        <h2 style="font-size: 54.4px; color: {{marca}};">Ubicación y contacto</h2>
+        <p style="margin-top: 16px; font-size: 18px; line-height: 1.625; color: #4a5f5b;">Estamos en Del Valle, con acceso a pie de calle y sin escalones para las camillas.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 24px; margin-top: 48px; align-items: start;">
+
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div style="background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 10px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+            <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 13.6px; overflow: hidden; background: #e8ecea;">
+              <svg viewBox="0 0 400 300" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+                <rect width="400" height="300" fill="#eef1ef"></rect>
+                <path d="M0 96h400M0 190h400M74 0v300M212 0v300M320 0v300" stroke="#dde3e0" stroke-width="10" fill="none"></path>
+                <path d="M0 40h400M0 250h400M148 0v300" stroke="#e6ebe8" stroke-width="5" fill="none"></path>
+                <path d="M-20 300L180 0" stroke="#f2d9a8" stroke-width="16" fill="none"></path>
+                <rect x="230" y="112" width="70" height="62" rx="4" fill="#dfe8e2"></rect>
+                <rect x="96" y="206" width="88" height="52" rx="4" fill="#dfe8e2"></rect>
+              </svg>
+              <div style="position: absolute; left: 50%; top: 46%; transform: translate(-50%, -100%); display: flex; flex-direction: column; align-items: center;">
+                <svg viewBox="0 0 24 24" fill="{{marca}}" style="width: 38px; height: 38px; filter: drop-shadow(0 4px 6px rgba(13, 59, 58, 0.35));"><path d="M12 21.5s7-6.1 7-11.1a7 7 0 1 0-14 0c0 5 7 11.1 7 11.1z"></path><circle cx="12" cy="10.2" r="2.6" fill="{{acento}}"></circle></svg>
+              </div>
+              <span style="position: absolute; left: 50%; top: 47%; transform: translateX(-50%); background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 999px; padding: 4px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: {{marca}}; white-space: nowrap;">PetCare</span>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="display: flex; align-items: flex-start; gap: 16px; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; padding: 16px;">
+              <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; background: #d9eae3; color: {{marca}}; margin-top: 2px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M12 21.5s7-6.1 7-11.1a7 7 0 1 0-14 0c0 5 7 11.1 7 11.1z"></path><circle cx="12" cy="10.2" r="2.6"></circle></svg>
+              </span>
+              <span style="flex: 1; min-width: 0;">
+                <span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Dirección</span>
+                <span style="display: block; margin-top: 4px; font-weight: 600; color: {{marca}};">Av. Insurgentes Sur 1234, Col. Del Valle, 03100 Ciudad de México</span>
+                <span style="display: block; margin-top: 2px; font-size: 14px; color: #4a5f5b;">A 200 m del Metro Zapata. Estacionamiento gratuito para clientes.</span>
+              </span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(30, 92, 87, 0.5)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 8px;"><path d="M4.5 12h15M13.5 6l6 6-6 6"></path></svg>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 16px; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; padding: 16px;">
+              <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; background: #d9eae3; color: {{marca}}; margin-top: 2px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M6.3 3h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.9 5.9l1.4-1.9L20 13.7v3a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.3 5.2 2 2 0 0 1 6.3 3z"></path></svg>
+              </span>
+              <span style="flex: 1; min-width: 0;">
+                <span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Teléfono</span>
+                <span style="display: block; margin-top: 4px; font-weight: 600; color: {{marca}};">+51 919 550 076</span>
+                <span style="display: block; margin-top: 2px; font-size: 14px; color: #4a5f5b;">Contestamos también fuera de horario para urgencias.</span>
+              </span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(30, 92, 87, 0.5)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 8px;"><path d="M4.5 12h15M13.5 6l6 6-6 6"></path></svg>
+            </div>
+
+            <div style="display: flex; align-items: flex-start; gap: 16px; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; padding: 16px;">
+              <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; background: #d9eae3; color: {{marca}}; margin-top: 2px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><rect x="2.8" y="4.8" width="18.4" height="14.4" rx="2.4"></rect><path d="m3.4 7 7.5 5.4a2 2 0 0 0 2.2 0L20.6 7"></path></svg>
+              </span>
+              <span style="flex: 1; min-width: 0;">
+                <span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Correo</span>
+                <span style="display: block; margin-top: 4px; font-weight: 600; color: {{marca}};">hola@petcare.mx</span>
+                <span style="display: block; margin-top: 2px; font-size: 14px; color: #4a5f5b;">Para historiales, facturas y convenios.</span>
+              </span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(30, 92, 87, 0.5)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 8px;"><path d="M4.5 12h15M13.5 6l6 6-6 6"></path></svg>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: relative; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 32px; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+          <div style="position: absolute; top: -9.6px; left: 28px; width: 72px; height: 10.4px; background: {{acento}}; border-radius: 6px 6px 0 0;"></div>
+          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #96600f;">Reserva de cita</p>
+          <h3 style="margin-top: 8px; font-size: 24px; color: {{marca}};">Cuéntanos qué pasa y te confirmamos el horario</h3>
+          <p style="margin-top: 10px; color: #4a5f5b;">Respondemos en menos de diez minutos dentro del horario de consulta.</p>
+          <div style="border-top: 2px dashed rgba(30, 92, 87, 0.32); margin: 24px 0;"></div>
+
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+              <div>
+                <div style="margin-bottom: 6px; font-size: 14px; font-weight: 600; color: {{marca}};">Tu nombre <span style="color: #b03a32;">*</span></div>
+                <div style="min-height: 48px; display: flex; align-items: center; padding: 11px 14px; background: #ffffff; border: 1.5px solid rgba(30, 92, 87, 0.28); border-radius: 11px; color: #8a9c98;">Andrea Villalobos</div>
+              </div>
+              <div>
+                <div style="margin-bottom: 6px; font-size: 14px; font-weight: 600; color: {{marca}};">Nombre de tu mascota <span style="color: #b03a32;">*</span></div>
+                <div style="min-height: 48px; display: flex; align-items: center; padding: 11px 14px; background: #ffffff; border: 1.5px solid rgba(30, 92, 87, 0.28); border-radius: 11px; color: #8a9c98;">Nube</div>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px;">
+              <div>
+                <div style="margin-bottom: 6px; font-size: 14px; font-weight: 600; color: {{marca}};">¿Qué necesita? <span style="color: #b03a32;">*</span></div>
+                <div style="min-height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 11px 14px; background: #ffffff; border: 1.5px solid rgba(30, 92, 87, 0.28); border-radius: 11px; color: #122220;">
+                  Elige un servicio
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#4a5f5b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="m6 9 6 6 6-6"></path></svg>
+                </div>
+              </div>
+              <div>
+                <div style="margin-bottom: 6px; font-size: 14px; font-weight: 600; color: {{marca}};">Día que te viene bien</div>
+                <div style="min-height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 11px 14px; background: #ffffff; border: 1.5px solid rgba(30, 92, 87, 0.28); border-radius: 11px; color: #122220;">
+                  dd / mm / aaaa
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#4a5f5b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 17px; height: 17px;"><rect x="3" y="5" width="18" height="16" rx="2"></rect><path d="M3 10h18M8 3v4M16 3v4"></path></svg>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div style="margin-bottom: 6px; font-size: 14px; font-weight: 600; color: {{marca}};">Algo que debamos saber</div>
+              <div style="min-height: 96px; padding: 11px 14px; background: #ffffff; border: 1.5px solid rgba(30, 92, 87, 0.28); border-radius: 11px; color: #8a9c98;">Lleva dos días sin comer y se rasca la oreja izquierda.</div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; margin-top: 4px; padding: 12px 24px; border-radius: 999px; background: {{acento}}; color: #122220; font-size: 16px; font-weight: 600;">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M12.04 2A9.9 9.9 0 0 0 2.15 11.9a9.8 9.8 0 0 0 1.36 4.98L2 22l5.27-1.47a9.9 9.9 0 0 0 4.77 1.21h.01A9.9 9.9 0 0 0 21.94 11.9 9.9 9.9 0 0 0 12.04 2zm0 18.05h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.87.84-3.05-.2-.31a8.2 8.2 0 1 1 6.99 3.82zm4.51-6.15c-.25-.13-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12s-.63.8-.77.96-.28.19-.53.06a6.72 6.72 0 0 1-3.36-2.94c-.25-.43.25-.4.72-1.34a.45.45 0 0 0-.02-.43c-.06-.13-.55-1.34-.76-1.83s-.4-.42-.55-.43h-.47a.9.9 0 0 0-.65.3 2.75 2.75 0 0 0-.86 2.05 4.79 4.79 0 0 0 1 2.54 10.94 10.94 0 0 0 4.2 3.71c1.56.67 2.17.73 2.95.61a2.5 2.5 0 0 0 1.65-1.17 2.05 2.05 0 0 0 .14-1.16c-.06-.11-.22-.17-.47-.29z"></path></svg>
+              Enviar y reservar por WhatsApp
+            </div>
+
+            <p style="text-align: center; font-size: 14px; color: #4a5f5b;">No se envía nada a ningún servidor: se abre WhatsApp con el mensaje ya escrito.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =============================================== CTA FINAL -->
+  <div style="background: {{acento}};">
+    <div style="width: 100%; max-width: 1248px; margin: 0 auto; padding: 80px 32px;">
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center;">
+        <div>
+          <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{marca}};">Último paso</p>
+          <h2 style="margin-top: 12px; font-size: 54.4px; color: #122220;">Aparta el hueco de hoy antes de que se lo lleve alguien más</h2>
+          <p style="margin-top: 16px; max-width: 576px; font-size: 18px; line-height: 1.625; color: rgba(18, 34, 32, 0.8);">Nos dices qué le pasa a tu mascota, te confirmamos la hora y te esperamos con su expediente abierto. Sin llamadas en espera.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <a href="#" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border-radius: 999px; background: {{marca}}; color: #ffffff; font-size: 16px; font-weight: 600;">Reservar cita</a>
+          <a href="#" style="display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 12px 24px; border-radius: 999px; border: 2px solid rgba(18, 34, 32, 0.25); color: #122220; font-size: 16px; font-weight: 600;">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M12.04 2A9.9 9.9 0 0 0 2.15 11.9a9.8 9.8 0 0 0 1.36 4.98L2 22l5.27-1.47a9.9 9.9 0 0 0 4.77 1.21h.01A9.9 9.9 0 0 0 21.94 11.9 9.9 9.9 0 0 0 12.04 2zm0 18.05h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.87.84-3.05-.2-.31a8.2 8.2 0 1 1 6.99 3.82zm4.51-6.15c-.25-.13-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12s-.63.8-.77.96-.28.19-.53.06a6.72 6.72 0 0 1-3.36-2.94c-.25-.43.25-.4.72-1.34a.45.45 0 0 0-.02-.43c-.06-.13-.55-1.34-.76-1.83s-.4-.42-.55-.43h-.47a.9.9 0 0 0-.65.3 2.75 2.75 0 0 0-.86 2.05 4.79 4.79 0 0 0 1 2.54 10.94 10.94 0 0 0 4.2 3.71c1.56.67 2.17.73 2.95.61a2.5 2.5 0 0 0 1.65-1.17 2.05 2.05 0 0 0 .14-1.16c-.06-.11-.22-.17-.47-.29z"></path></svg>
+            WhatsApp
+          </a>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 4px 0; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; color: rgba(18, 34, 32, 0.75); text-decoration: underline; text-underline-offset: 4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M6.3 3h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.9 5.9l1.4-1.9L20 13.7v3a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.3 5.2 2 2 0 0 1 6.3 3z"></path></svg>
+            +51 919 550 076
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================== FOOTER -->
+  <div style="position: relative; overflow: hidden; background: {{marca}}; color: #ffffff;">
+    <div style="position: absolute; inset: 0; background-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='190' height='190' viewBox='0 0 190 190'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cellipse cx='30' cy='34' rx='7' ry='9'/%3E%3Cellipse cx='16' cy='20' rx='4' ry='5.5' transform='rotate(-22 16 20)'/%3E%3Cellipse cx='27' cy='14' rx='4' ry='5.5' transform='rotate(-8 27 14)'/%3E%3Cellipse cx='38' cy='16' rx='4' ry='5.5' transform='rotate(10 38 16)'/%3E%3Cellipse cx='47' cy='25' rx='3.6' ry='5' transform='rotate(26 47 25)'/%3E%3Cellipse cx='128' cy='134' rx='7' ry='9'/%3E%3Cellipse cx='114' cy='120' rx='4' ry='5.5' transform='rotate(-22 114 120)'/%3E%3Cellipse cx='125' cy='114' rx='4' ry='5.5' transform='rotate(-8 125 114)'/%3E%3Cellipse cx='136' cy='116' rx='4' ry='5.5' transform='rotate(10 136 116)'/%3E%3Cellipse cx='145' cy='125' rx='3.6' ry='5' transform='rotate(26 145 125)'/%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
+
+    <div style="position: relative; width: 100%; max-width: 1248px; margin: 0 auto; padding: 0 32px;">
+      <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; padding: 64px 0;">
+
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <svg viewBox="0 0 32 32" style="width: 40px; height: 40px;">
+              <rect x="1.5" y="4.5" width="29" height="25" rx="6" fill="#ffffff"></rect>
+              <rect x="7" y="2.5" width="11" height="4" rx="2" fill="#ffffff"></rect>
+              <g fill="{{acento}}">
+                <ellipse cx="16" cy="20.6" rx="4.5" ry="3.9"></ellipse>
+                <ellipse cx="9.9" cy="14.6" rx="2.3" ry="3" transform="rotate(-20 9.9 14.6)"></ellipse>
+                <ellipse cx="14.2" cy="11.6" rx="2.3" ry="3" transform="rotate(-7 14.2 11.6)"></ellipse>
+                <ellipse cx="18.6" cy="11.8" rx="2.3" ry="3" transform="rotate(8 18.6 11.8)"></ellipse>
+                <ellipse cx="22.6" cy="14.9" rx="2.1" ry="2.8" transform="rotate(22 22.6 14.9)"></ellipse>
+              </g>
+            </svg>
+            <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -0.025em; color: #ffffff;">PetCare</span>
+          </div>
+          <p style="margin-top: 16px; max-width: 320px; line-height: 1.625; color: rgba(217, 234, 227, 0.8);">Clínica Veterinaria en Del Valle. Consulta, cirugía, laboratorio y urgencias 24 horas desde 2011.</p>
+          <div style="display: flex; gap: 10px; margin-top: 24px;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.18); color: #d9eae3;">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.5-3.91 3.77-3.91 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.9h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94z"></path></svg>
+            </span>
+            <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.18); color: #d9eae3;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"></circle></svg>
+            </span>
+            <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.18); color: #d9eae3;">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 1 1 .72-5.08v-3.1a5.65 5.65 0 0 0-.72-.05A5.68 5.68 0 1 0 15.54 15.4V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.24-1.48z"></path></svg>
+            </span>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{acento}};">Navegación</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Servicios</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">La clínica</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Equipo</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Reseñas</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Horarios</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Contacto</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Reservar cita</a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{acento}};">Servicios</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Consulta general</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Vacunación y desparasitación</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Cirugía y esterilización</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Urgencias 24 horas</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Estética canina y felina</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Laboratorio e imagen</a>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{acento}};">Contacto</div>
+          <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 16px;">
+            <div style="display: flex; align-items: flex-start; gap: 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(217, 234, 227, 0.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;"><path d="M12 21.5s7-6.1 7-11.1a7 7 0 1 0-14 0c0 5 7 11.1 7 11.1z"></path><circle cx="12" cy="10.2" r="2.6"></circle></svg>
+              <a href="#" style="color: rgba(217, 234, 227, 0.75);">Av. Insurgentes Sur 1234, Col. Del Valle, 03100 Ciudad de México</a>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(217, 234, 227, 0.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;"><path d="M6.3 3h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.9 5.9l1.4-1.9L20 13.7v3a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.3 5.2 2 2 0 0 1 6.3 3z"></path></svg>
+              <a href="#" style="font-family: 'IBM Plex Mono', monospace; color: rgba(217, 234, 227, 0.75);">+51 919 550 076</a>
+            </div>
+            <div style="display: flex; align-items: flex-start; gap: 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(217, 234, 227, 0.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;"><rect x="2.8" y="4.8" width="18.4" height="14.4" rx="2.4"></rect><path d="m3.4 7 7.5 5.4a2 2 0 0 0 2.2 0L20.6 7"></path></svg>
+              <a href="#" style="color: rgba(217, 234, 227, 0.75);">hola@petcare.mx</a>
+            </div>
+          </div>
+
+          <div style="margin-top: 24px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 12px; padding: 16px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{acento}};">Horarios</div>
+            <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: rgba(217, 234, 227, 0.8);">
+              <div style="display: flex; justify-content: space-between; gap: 12px;"><span>Lunes a viernes</span><span style="font-variant-numeric: tabular-nums;">08:00–20:00</span></div>
+              <div style="display: flex; justify-content: space-between; gap: 12px;"><span>Sábado</span><span style="font-variant-numeric: tabular-nums;">09:00–18:00</span></div>
+              <div style="display: flex; justify-content: space-between; gap: 12px;"><span>Domingo</span><span style="font-variant-numeric: tabular-nums;">10:00–14:00</span></div>
+              <div style="display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 6px; color: {{acento}};"><span>Urgencias</span><span>24 h</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid rgba(255, 255, 255, 0.12); padding-top: 24px; padding-bottom: 80px; font-size: 14px; color: rgba(217, 234, 227, 0.6);">
+        <p>© 2026 PetCare. Todos los derechos reservados.</p>
+        <div style="display: flex; gap: 20px;">
+          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Aviso de privacidad</a>
+          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Términos de servicio</a>
+          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Volver arriba</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- absorbe el sobrante del artboard en el color del pie -->
+  <div style="flex-grow: 1; background: {{marca}};"></div>
+
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"acento":{"editor":"color","default":"#e8a33d","options":["#e8a33d","#c9722b","#6f9f7a","#c2557c"],"section":"Marca"},"marca":{"editor":"color","default":"#0d3b3a","options":["#0d3b3a","#123a52","#2c2a3d","#173d2a"],"section":"Marca"},"$preview":{"width":1440,"height":7960}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      acento: this.props.acento ?? '#e8a33d',
+      marca: this.props.marca ?? '#0d3b3a',
+    };
+  }
+}
+</script>
+</body>
+</html>

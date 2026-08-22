@@ -1,0 +1,29 @@
+{
+  "name": "sananton-landing",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Landing page de la clinica veterinaria San Anton",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "imagenes": "node scripts/generar-imagenes.mjs",
+    "capturas": "node scripts/capturas.mjs",
+    "secciones": "node scripts/secciones.mjs",
+    "auditar": "node scripts/auditoria.mjs",
+    "carrusel": "node scripts/carrusel.mjs"
+  },
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.0",
+    "playwright-core": "^1.62.1",
+    "sharp": "^0.35.3",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.2.2"
+  }
+}
