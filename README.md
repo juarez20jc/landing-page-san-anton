@@ -2,6 +2,8 @@
 
 Landing page de la **Clínica Veterinaria San Antón** (Plaza Norte, Independencia — Lima). Vite + React 19 + Tailwind 4, sin backend.
 
+**En línea:** <https://juarez20jc.github.io/landing-page-san-anton/>
+
 ## Empezar
 
 ```bash
@@ -14,8 +16,19 @@ npm run build      # genera dist/
 npm run preview    # sirve dist/ en http://localhost:4173
 ```
 
-Para publicar, sube el contenido de `dist/` a cualquier hosting estático
-(Hostinger, Netlify, Vercel, GitHub Pages…). No hace falta servidor.
+## Despliegue
+
+Cada `git push` a `main` publica solo: el workflow de
+`.github/workflows/deploy.yml` construye el sitio y lo sube a GitHub Pages.
+No hay que hacer nada más.
+
+El sitio cuelga de una subcarpeta (`/landing-page-san-anton/`), así que
+`vite.config.js` fija `base` en el build. Si algún día lo mueves a un
+dominio propio, cambia ese `base` a `'/'` y el campo `sitio` de
+`src/data/clinica.js`.
+
+Para publicarlo en otro sitio, el `dist/` que genera `npm run build` es
+estático y funciona en cualquier hosting (Netlify, Vercel, Hostinger…).
 
 ---
 
@@ -39,7 +52,7 @@ Los valores actuales son **placeholders realistas**. Los tres imprescindibles:
 |---|---|---|
 | `telefono` | `+51 919 550 076` | Lo que se ve en pantalla, y en `tel` el mismo número sin espacios |
 | `whatsapp` | `51919550076` | Sólo dígitos con código de país. Perú: `51` + los 9 dígitos. (México móvil llevaría `52` + `1` + número) |
-| `sitio` | `https://www.sananton.pe` | **Marcador**: todavía no hay dominio. Se usa en canonical, Open Graph y sitemap |
+| `sitio` | `https://juarez20jc.github.io/landing-page-san-anton` | La URL de GitHub Pages. Cámbiala si algún día hay dominio propio (y con ella `robots.txt` y `sitemap.xml`) |
 
 Al cambiar `sitio`, actualiza también `public/robots.txt` y `public/sitemap.xml`.
 
