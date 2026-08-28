@@ -1,32 +1,184 @@
 {
   "artboards": [
-    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 7960, "title": "Escritorio · 1440", "print": "flow" },
-    { "file": "Movil.dc.html", "x": 1580, "y": 0, "w": 390, "h": 4100, "title": "Móvil 1 · hero y servicios", "print": "flow" },
-    { "file": "MovilMedio.dc.html", "x": 2090, "y": 0, "w": 390, "h": 5590, "title": "Móvil 2 · clínica, equipo y reseñas", "print": "flow" },
-    { "file": "MovilFin.dc.html", "x": 2600, "y": 0, "w": 390, "h": 5070, "title": "Móvil 3 · horarios, contacto y pie", "print": "flow" }
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 5340,
+      "title": "Escritorio 1 · portada, servicios, liquidación y clínica",
+      "print": "flow"
+    },
+    {
+      "file": "MainFin.dc.html",
+      "x": 1580,
+      "y": 0,
+      "w": 1440,
+      "h": 3580,
+      "title": "Escritorio 2 · horarios, contacto, más vendidos y pie",
+      "print": "flow"
+    },
+    {
+      "file": "Portada2.dc.html",
+      "x": 1580,
+      "y": 3880,
+      "w": 1440,
+      "h": 1160,
+      "title": "Portada 2 de 3",
+      "print": "flow"
+    },
+    {
+      "file": "Portada3.dc.html",
+      "x": 1620,
+      "y": 5289,
+      "w": 1440,
+      "h": 1160,
+      "title": "Portada 3 de 3",
+      "print": "flow"
+    },
+    {
+      "file": "Movil.dc.html",
+      "x": 3180,
+      "y": 0,
+      "w": 390,
+      "h": 3420,
+      "title": "Móvil 1 · portada, servicios y liquidación",
+      "print": "flow"
+    },
+    {
+      "file": "MovilMedio.dc.html",
+      "x": 3690,
+      "y": 0,
+      "w": 390,
+      "h": 1940,
+      "title": "Móvil 2 · la clínica y las reseñas",
+      "print": "flow"
+    },
+    {
+      "file": "MovilFin.dc.html",
+      "x": 4200,
+      "y": 0,
+      "w": 390,
+      "h": 4790,
+      "title": "Móvil 3 · horarios, contacto, más vendidos y pie",
+      "print": "flow"
+    },
+    {
+      "file": "Artboard.dc.html",
+      "x": 4750,
+      "y": 0,
+      "w": 800,
+      "h": 600
+    }
   ],
   "annotations": [
     {
-      "id": "tweaks",
+      "id": "hecho",
       "x": 0,
       "y": -300,
       "w": 460,
-      "text": "Los dos chips de color de arriba retematizan las cuatro pantallas:\n\nACENTO — el ámbar. Botones, pestañas de las fichas, sellos, el subrayado del titular y las cifras.\nMARCA — el verde quirófano. Hero, reseñas, pie y todos los títulos.\n\nEl resto se edita a mano: clic en cualquier elemento para el panel de propiedades, doble clic sobre un texto para reescribirlo."
+      "text": "LO QUE SE APLICÓ DE TUS NOTAS\n\n· La portada es un carrusel de 3. La 1 está en «Escritorio 1»; la 2 y la 3 son sus propios artboards, debajo del «Escritorio 2». Cada una tiene su fondo, su imagen y sus frases; los botones, las estrellas y las tres cifras se repiten iguales en las tres.\n· Dos secciones de producto: LIQUIDACIÓN (−30 %) entre servicios y la clínica, y MÁS VENDIDOS (−5 a −12 %) después de contacto. Las dos con carrusel y casilla para marcar.\n· En móvil los cuatro motivos de la clínica ya no van apilados: sale uno cada 2 s y al final vuelve al primero.\n· El bloque de ubicación y contacto de móvil ocupa la mitad: mapa más bajo y las tres tarjetas sin la línea de explicación.\n· Las secciones que borraste (equipo, CTA final, columnas del pie) siguen fuera; sólo quité las franjas ámbar vacías que quedaron."
     },
     {
-      "id": "movil",
+      "id": "portadas",
       "x": 500,
       "y": -300,
       "w": 440,
-      "text": "El móvil va en tres pantallas seguidas porque un artboard no puede pasar de 8000 px de alto y la página completa a 390 px mide unos 14 600.\n\nSe leen de izquierda a derecha: es un único scroll partido en tres, no tres pantallas distintas."
+      "text": "LAS TRES PORTADAS\n\nSon tres artboards distintos porque en el lienzo no hay movimiento: sólo así puedes ver y editar las tres a la vez.\n\nLas fotos de la 2 y la 3 son de prueba, para que se vea el encuadre. Cámbialas por las verdaderas cuando las tengas: clic en la imagen y súbela desde el panel."
+    },
+    {
+      "id": "inventado",
+      "x": 980,
+      "y": -300,
+      "w": 460,
+      "text": "FOTOS SÍ, DATOS TODAVÍA NO\n\nLas fotos de los ocho productos que subiste ya están dentro de su marco, con recorte «contain» para que no se corte nada. Cuatro marcos siguen vacíos (comedero, kit de cepillado, desparasitante y snacks): suéltales la foto encima y entra sola.\n\nLo que sigue inventado: los nombres, las descripciones y los precios. Los descuentos son los que tú pusiste.\n\nY de antes: las cuatro reseñas, «4.9 de 380 reseñas», «14 años», «12 mil pacientes» y el «Desde S/99» de consulta."
     },
     {
       "id": "difs",
-      "x": 980,
+      "x": 1480,
+      "y": -300,
+      "w": 460,
+      "text": "AQUÍ NADA SE MUEVE\n\nEn el lienzo todos los carruseles están parados en la primera tarjeta: portada, servicios, reseñas, los dos de producto y los motivos de la clínica. En la web sí pasan solos cada 2 s, se paran al deslizar con el dedo y vuelven a arrancar 2 s después de soltar.\n\nEl mapa es un dibujo (Google Maps no carga aquí dentro) y el «Abierto hasta las 18:00 h» está congelado; en la página se calcula con la hora de quien entra."
+    },
+    {
+      "id": "movil",
+      "x": 1980,
       "y": -300,
       "w": 440,
-      "text": "Dos cosas que no son iguales que en la web real:\n\n· El mapa es un dibujo. Google Maps no carga dentro del lienzo, así que va un marcador con el mismo encuadre.\n· El estado «Abierto hasta las 18:00 h» está congelado. En la página se calcula con la hora de quien entra."
+      "text": "EL MÓVIL, EN TRES TROZOS\n\nUn artboard no puede pasar de 8000 px de alto y la página a 390 px mide unos 10.200. Se leen de izquierda a derecha: es un solo scroll partido en tres.\n\nLo mismo pasa ahora con el escritorio: «Escritorio 1» y «Escritorio 2» son la misma página seguida."
+    },
+    {
+      "id": "tweaks",
+      "x": 2480,
+      "y": -300,
+      "w": 440,
+      "text": "Los dos chips de color de arriba retematizan todas las pantallas:\n\nACENTO — el ámbar. Botones, etiquetas de descuento, pestañas de las fichas, sellos y las cifras.\nMARCA — el verde quirófano. Portada, reseñas, barra de pedido, pie y todos los títulos.\n\nEl resto se edita a mano: clic en cualquier elemento para el panel de propiedades, doble clic sobre un texto para reescribirlo."
+    },
+    {
+      "id": "note-1",
+      "x": -560,
+      "y": 0,
+      "w": 420,
+      "text": "Acá comemos CD esos estos ocupan mucho espacio lo que yo quiero es que las cuatro etiquetas que dicen consultas de 40 minutos manejo libre de estrés presupuesto ante empezar historial siempre disponible Estoy demostrándose 1 por 1 no como corrocel sino que Primero se consume se se muestra el de consulta de 40 minutos luego El de manejo libre de estres dejo el presupuesto antes de empezar luego alistar siempre disponible Esto se mostrará un 1 cada dos segundos y cuando termine regresa al principio"
+    },
+    {
+      "id": "note-2",
+      "x": -560,
+      "y": 480,
+      "w": 420,
+      "text": "Busca frases y títulos Porque yo quiero lo que yo quiero es que Esto sea un carrusel de 3 portadas tal como acá está el DIF este verde se tiene que mover hacia la derecha otro otro fondo Que tenga otra imagen y otras frases que inciten porque esta veterinaria es mejor Los botones reservar cita escribir por Whatsapp Y las estrellas con los 14 años de experiencia 12000 tantos y 4 de reseñas eso mantelo Punto además necesito que me dejes espacio para insertar o Como tú vas a generar esas imágenes de prueba no las imagines definitivas Yo necesito colocar las verdaderas"
+    },
+    {
+      "id": "note-3",
+      "x": -560,
+      "y": 1020,
+      "w": 420,
+      "text": "En esta parte se tiene que colocar los productos más vendidos que en la ventanaria consigue vend Tiene que ser un carrusel en el cual muestre los productos con tal vez un rango de 5 a 7 OA 12% de de descuento no como los productos que te dije que que pusieras arriba esas tienen que estar con más o menos 30% Acá la cosa Ver si cabe bien un botón de compras Y este botón de compras Va a llevarnos a Whatsapp con todos los productos seleccionados Al momento también en los carruseles de mover con el dedo tan vamos a Este movimiento se tiene que restaurarse después Dos segundos de dejarte tocar"
+    },
+    {
+      "id": "note-4",
+      "x": -560,
+      "y": 1560,
+      "w": 420,
+      "text": "Implementa era mismo Misma lógica que es la que te deje para la versión destokp"
+    },
+    {
+      "id": "note-5",
+      "x": -560,
+      "y": 1780,
+      "w": 420,
+      "text": "Acá en la sección ubicación y contacto necesito ahorrar espacio Por ende quiero que trates de achicar el mapa y acomodes las 3 tarjetas de contacto a su costado OY un abajo de repente trata de ver la manera para que se se adecúe Son más que todo en segulares y tablet Porque en computadora está bien"
+    },
+    {
+      "id": "note-6",
+      "x": -560,
+      "y": 2120,
+      "w": 420,
+      "text": "A esta parte le estoy quitando algunas secciones Más que todo para economizar espacio Impleméndelo"
+    },
+    {
+      "id": "note-7",
+      "x": 2926,
+      "y": 2307,
+      "w": 240,
+      "text": "En la parte de abajo donde dice pedir por Whatsapp Eso elimínalo en toda la parte de abajo elimínala al Al igual en la sección de liquidación de estantería también hermínalo en la parte tu pedido porque todas esas cosas se tienen que ver en un carrito si no se ve en un carrito como el usuario puede entonces eliminar los productos que ya no quiere comprar Es haz un símbolo de careto por encima de wassap Y ese carrito cuando lo abra abra un Un espacio en la derecha donde pueda Lo seleccionado utiliza el /frontend desng"
+    },
+    {
+      "id": "note-8",
+      "x": 983,
+      "y": 2610,
+      "w": 240,
+      "text": "Está bien pero ya eliminé la parte de abajo de pedir por Whatsapp Y quiero más que todo lo que acá implementes una especie de resaltado por cuando pasa el El cursor que la tarjeta se mueva de izquierda a derecha Inclinándose Además Al momento de apretar el clic Que salga un Dale algo bonito al botón cuando haga Click Esta película para todas las versiones "
+    },
+    {
+      "id": "pendiente",
+      "x": 2980,
+      "y": -300,
+      "w": 440,
+      "text": "PENDIENTE DE TU RESPUESTA\n\nNota 7 (carrito flotante con panel lateral) y nota 8 (tarjeta inclinada al pasar el cursor, efecto al hacer clic) están sin hacer. Te pregunté dos cosas por el chat y sigo esperando:\n\n· El carrito, ¿lo dibujo cerrado en las páginas y hago un artboard aparte con el panel abierto?\n· El hover, ¿dejo una tarjeta ya inclinada en cada sección para que se vea, o las dejo todas rectas?"
     }
   ],
-  "launch": { "view": "canvas" }
+  "launch": {
+    "view": "canvas"
+  }
 }

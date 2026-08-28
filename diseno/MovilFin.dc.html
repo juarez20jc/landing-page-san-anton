@@ -7,7 +7,7 @@
 <body>
 <x-dc>
 <helmet>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Sans:wght@400..700&amp;display=swap">
   <style>
     body { margin: 0; font-family: 'Instrument Sans', system-ui, sans-serif; color: #122220; }
     * { box-sizing: border-box; }
@@ -54,7 +54,7 @@
     </div>
 
     <div style="position: relative; overflow: hidden; border-radius: 20px; background: {{marca}}; color: #ffffff; margin-top: 40px; min-height: 460px;">
-      <img src="urgencias.webp" alt="Un veterinario de guardia revisa a un perro pequeño en urgencias" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.75;">
+      <img src="./gemini_generated_image_pkgqagpkgqagpkgq-mtc501zy-xq72.jpg" alt="Recepción de San Antón con un perro esperando junto al mostrador" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.75;">
       <div style="position: absolute; inset: 0; background: linear-gradient(to top, {{marca}} 0%, rgba(13, 59, 58, 0.88) 55%, rgba(13, 59, 58, 0.15) 100%);"></div>
       <div style="position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 460px; padding: 28px;">
         <span style="align-self: flex-start; display: inline-flex; padding: 5px 11px; border: 2px solid #b03a32; border-radius: 6.4px; rotate: -3deg; background: #b03a32; color: #ffffff; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.9;">Guardia activa</span>
@@ -75,34 +75,38 @@
   <div style="padding: 80px 20px; background: #f4f7f4;">
     <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;"><span style="display: inline-block; width: 28px; height: 1px; background: #1e5c57;"></span>Dónde estamos</p>
     <h2 style="font-size: 32px; color: {{marca}};">Ubicación y contacto</h2>
-    <p style="margin-top: 16px; font-size: 18px; line-height: 1.625; color: #4a5f5b;">Estamos en Del Valle, con acceso a pie de calle y sin escalones para las camillas.</p>
+    <p style="margin-top: 16px; font-size: 18px; line-height: 1.625; color: #4a5f5b;">Estamos en Plaza Norte, con acceso a pie de calle y sin escalones para las camillas.</p>
 
-    <div style="margin-top: 48px; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 10px; box-shadow: 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
-      <div style="position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 13.6px; overflow: hidden; background: #e8ecea;">
+    <div style="margin-top: 32px; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 20px; padding: 10px; box-shadow: 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+      <div style="position: relative; width: 100%; aspect-ratio: 21 / 10; border-radius: 13.6px; overflow: hidden; background: #e8ecea;">
         <svg viewBox="0 0 400 300" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%;">
           <rect width="400" height="300" fill="#eef1ef"></rect>
-          <path d="M0 96h400M0 190h400M74 0v300M212 0v300M320 0v300" stroke="#dde3e0" stroke-width="10" fill="none"></path>
-          <path d="M0 40h400M0 250h400M148 0v300" stroke="#e6ebe8" stroke-width="5" fill="none"></path>
-          <path d="M-20 300L180 0" stroke="#f2d9a8" stroke-width="16" fill="none"></path>
-          <rect x="230" y="112" width="70" height="62" rx="4" fill="#dfe8e2"></rect>
-          <rect x="96" y="206" width="88" height="52" rx="4" fill="#dfe8e2"></rect>
+          <path d="M0 66h400M0 288h400M62 0v300M310 0v300M376 0v300" stroke="#e6ebe8" stroke-width="5" fill="none"></path>
+          <path d="M0 226h400" stroke="#dde3e0" stroke-width="18" fill="none"></path>
+          <path d="M175 0v300" stroke="#dde3e0" stroke-width="34" fill="none"></path>
+          <path d="M175 0v300" stroke="#f2d9a8" stroke-width="3" stroke-dasharray="11 9" fill="none"></path>
+          <rect x="38" y="92" width="106" height="108" rx="5" fill="#dfe8e2"></rect>
+          <rect x="236" y="90" width="62" height="48" rx="4" fill="#e3eae6"></rect>
+          <rect x="212" y="168" width="92" height="42" rx="4" fill="#e3eae6"></rect>
+          <rect x="212" y="246" width="74" height="38" rx="4" fill="#e3eae6"></rect>
         </svg>
         <div style="position: absolute; left: 50%; top: 46%; transform: translate(-50%, -100%);">
           <svg viewBox="0 0 24 24" fill="{{marca}}" style="width: 38px; height: 38px; filter: drop-shadow(0 4px 6px rgba(13, 59, 58, 0.35));"><path d="M12 21.5s7-6.1 7-11.1a7 7 0 1 0-14 0c0 5 7 11.1 7 11.1z"></path><circle cx="12" cy="10.2" r="2.6" fill="{{acento}}"></circle></svg>
         </div>
-        <span style="position: absolute; left: 50%; top: 47%; transform: translateX(-50%); background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 999px; padding: 4px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: {{marca}}; white-space: nowrap;">PetCare</span>
+        <span style="position: absolute; left: 23%; top: 44%; transform: translateX(-50%); font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d8f8a; white-space: nowrap;">Plaza Norte</span>
+          <span style="position: absolute; left: 36%; top: 66%; transform: translateX(-50%) rotate(-90deg); font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: #7d8f8a; white-space: nowrap;">Av. Mendiola</span>
+          <span style="position: absolute; left: 50%; top: 47%; transform: translateX(-50%); background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.18); border-radius: 999px; padding: 4px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: {{marca}}; white-space: nowrap;">San Antón</span>
       </div>
     </div>
 
-    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 24px;">
+    <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 20px;">
       <div style="display: flex; align-items: flex-start; gap: 16px; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; padding: 16px;">
         <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px; background: #d9eae3; color: {{marca}}; margin-top: 2px;">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M12 21.5s7-6.1 7-11.1a7 7 0 1 0-14 0c0 5 7 11.1 7 11.1z"></path><circle cx="12" cy="10.2" r="2.6"></circle></svg>
         </span>
         <span style="flex: 1; min-width: 0;">
           <span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Dirección</span>
-          <span style="display: block; margin-top: 4px; font-weight: 600; color: {{marca}};">Av. Insurgentes Sur 1234, Col. Del Valle, 03100 Ciudad de México</span>
-          <span style="display: block; margin-top: 2px; font-size: 14px; color: #4a5f5b;">A 200 m del Metro Zapata. Estacionamiento gratuito.</span>
+          <span style="display: block; margin-top: 4px; font-weight: 600; color: {{marca}}; overflow-wrap: anywhere;">Av. Alfredo Mendiola 1400, Independencia 15311</span>
         </span>
       </div>
 
@@ -112,8 +116,7 @@
         </span>
         <span style="flex: 1; min-width: 0;">
           <span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Teléfono</span>
-          <span style="display: block; margin-top: 4px; font-weight: 600; color: {{marca}};">+51 919 550 076</span>
-          <span style="display: block; margin-top: 2px; font-size: 14px; color: #4a5f5b;">Contestamos también fuera de horario para urgencias.</span>
+          <span style="display: block; margin-top: 4px; font-weight: 600; color: {{marca}}; overflow-wrap: anywhere;">+51 919 550 076</span>
         </span>
       </div>
 
@@ -123,8 +126,7 @@
         </span>
         <span style="flex: 1; min-width: 0;">
           <span style="display: block; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;">Correo</span>
-          <span style="display: block; margin-top: 4px; font-weight: 600; color: {{marca}};">hola@petcare.mx</span>
-          <span style="display: block; margin-top: 2px; font-size: 14px; color: #4a5f5b;">Para historiales, facturas y convenios.</span>
+          <span style="display: block; margin-top: 4px; font-weight: 600; color: {{marca}}; overflow-wrap: anywhere;">gianfranco.caramutti@hotmail.com</span>
         </span>
       </div>
     </div>
@@ -172,23 +174,136 @@
     </div>
   </div>
 
-  <!-- =============================================== CTA FINAL -->
-  <div style="background: {{acento}}; padding: 64px 20px;">
-    <p style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{marca}};">Último paso</p>
-    <h2 style="margin-top: 12px; font-size: 32px; color: #122220;">Aparta el hueco de hoy antes de que se lo lleve alguien más</h2>
-    <p style="margin-top: 16px; font-size: 18px; line-height: 1.625; color: rgba(18, 34, 32, 0.8);">Nos dices qué le pasa a tu mascota, te confirmamos la hora y te esperamos con su expediente abierto. Sin llamadas en espera.</p>
-    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 32px;">
-      <div style="display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 24px; border-radius: 999px; background: {{marca}}; color: #ffffff; font-size: 16px; font-weight: 600;">Reservar cita</div>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 12px 24px; border-radius: 999px; border: 2px solid rgba(18, 34, 32, 0.25); color: #122220; font-size: 16px; font-weight: 600;">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M12.04 2A9.9 9.9 0 0 0 2.15 11.9a9.8 9.8 0 0 0 1.36 4.98L2 22l5.27-1.47a9.9 9.9 0 0 0 4.77 1.21h.01A9.9 9.9 0 0 0 21.94 11.9 9.9 9.9 0 0 0 12.04 2zm0 18.05h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.87.84-3.05-.2-.31a8.2 8.2 0 1 1 6.99 3.82zm4.51-6.15c-.25-.13-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12s-.63.8-.77.96-.28.19-.53.06a6.72 6.72 0 0 1-3.36-2.94c-.25-.43.25-.4.72-1.34a.45.45 0 0 0-.02-.43c-.06-.13-.55-1.34-.76-1.83s-.4-.42-.55-.43h-.47a.9.9 0 0 0-.65.3 2.75 2.75 0 0 0-.86 2.05 4.79 4.79 0 0 0 1 2.54 10.94 10.94 0 0 0 4.2 3.71c1.56.67 2.17.73 2.95.61a2.5 2.5 0 0 0 1.65-1.17 2.05 2.05 0 0 0 .14-1.16c-.06-.11-.22-.17-.47-.29z"></path></svg>
-        WhatsApp
-      </div>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 4px 0; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500; color: rgba(18, 34, 32, 0.75); text-decoration: underline; text-underline-offset: 4px;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M6.3 3h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.9 5.9l1.4-1.9L20 13.7v3a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.3 5.2 2 2 0 0 1 6.3 3z"></path></svg>
-        +51 919 550 076
-      </div>
-    </div>
-  </div>
+
+  <!-- ========================================== MÁS VENDIDOS -->
+  <div style="padding: 72px 20px; background: rgba(217, 234, 227, 0.5);">
+        <p style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #1e5c57;"><span style="display: inline-block; width: 28px; height: 1px; background: #1e5c57;"></span>Los más vendidos</p>
+        <h2 style="font-size: 32px; color: {{marca}};">Lo que más sale del mostrador</h2>
+        <p style="margin-top: 16px; max-width: 672px; font-size: 18px; line-height: 1.625; color: #4a5f5b;">Comida, antipulgas y desparasitantes con un descuento pequeño por comprarlos aquí mismo, sin pedido mínimo. Marca lo que quieras y lo dejamos listo para recoger.</p>
+        <div style="display: flex; gap: 16px; margin: 32px -20px 0; padding: 4px 20px 12px; overflow: hidden;">
+          <div style="flex: 0 0 74%; display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; overflow: hidden; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+            <div style="position: relative; aspect-ratio: 3 / 2; background: #ffffff; border-bottom: 1px solid rgba(30, 92, 87, 0.12); display: flex; align-items: center; justify-content: center; padding: 12px;">
+              <img src="./244219-800-auto-mtc89ksr-vud3.webp" alt="Alimento seco perro adulto · 15 kg" style="display: block; width: 100%; height: 100%; object-fit: contain;">
+              <span style="position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 999px; background: {{acento}}; color: #122220; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;">−10&nbsp;%</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1; padding: 14px 16px 16px;">
+              <h3 style="font-size: 16px; line-height: 1.25; color: {{marca}};">Alimento seco perro adulto · 15 kg</h3>
+              <p style="font-size: 14px; line-height: 1.5; color: #4a5f5b;">La bolsa que más sale. Razas medianas y grandes.</p>
+              <div style="display: flex; align-items: baseline; gap: 8px; margin-top: auto; padding-top: 12px;">
+                <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: {{marca}};">S/&nbsp;161</span>
+                <span style="font-size: 14px; color: #8b9e98; text-decoration: line-through;">S/&nbsp;179</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 12px; border-radius: 12px; border: 1px solid {{marca}}; background: rgba(13, 59, 58, 0.06);">
+                <span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 5px; border: 2px solid {{marca}}; background: {{marca}};"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><path d="m4.5 12.8 4.6 4.4L19.5 6.8"></path></svg></span>
+                <span style="font-size: 14px; font-weight: 600; color: {{marca}};">Añadido al pedido</span>
+              </div>
+            </div>
+          </div>
+          <div style="flex: 0 0 74%; display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; overflow: hidden; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+            <div style="position: relative; aspect-ratio: 3 / 2; background: #ffffff; border-bottom: 1px solid rgba(30, 92, 87, 0.12); display: flex; align-items: center; justify-content: center; padding: 12px;">
+              <img src="./proteggo-3m-small-4-5-a-10kg-250mg-antip-mtc8a4jh-w9vn.webp" alt="Antipulgas en pipeta · 3 meses" style="display: block; width: 100%; height: 100%; object-fit: contain;">
+              <span style="position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 999px; background: {{acento}}; color: #122220; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;">−8&nbsp;%</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1; padding: 14px 16px 16px;">
+              <h3 style="font-size: 16px; line-height: 1.25; color: {{marca}};">Antipulgas en pipeta · 3 meses</h3>
+              <p style="font-size: 14px; line-height: 1.5; color: #4a5f5b;">Una pipeta al mes. Perro de 10 a 25 kg.</p>
+              <div style="display: flex; align-items: baseline; gap: 8px; margin-top: auto; padding-top: 12px;">
+                <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: {{marca}};">S/&nbsp;88</span>
+                <span style="font-size: 14px; color: #8b9e98; text-decoration: line-through;">S/&nbsp;96</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 12px; border-radius: 12px; border: 1px solid rgba(30, 92, 87, 0.2); background: transparent;">
+                <span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 5px; border: 2px solid rgba(30, 92, 87, 0.35); background: transparent;"></span>
+                <span style="font-size: 14px; font-weight: 600; color: #4a5f5b;">Añadir al pedido</span>
+              </div>
+            </div>
+          </div>
+          <div style="flex: 0 0 74%; display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; overflow: hidden; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+            <div style="position: relative; aspect-ratio: 3 / 2; background: #ffffff; border-bottom: 1px solid rgba(30, 92, 87, 0.12); display: flex; align-items: center; justify-content: center; padding: 12px;">
+              <img src="./hc000486_m-mtc8b3hd-c5rf.jpg" alt="Arena aglomerante · 10 kg" style="display: block; width: 100%; height: 100%; object-fit: contain;">
+              <span style="position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 999px; background: {{acento}}; color: #122220; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;">−12&nbsp;%</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1; padding: 14px 16px 16px;">
+              <h3 style="font-size: 16px; line-height: 1.25; color: {{marca}};">Arena aglomerante · 10 kg</h3>
+              <p style="font-size: 14px; line-height: 1.5; color: #4a5f5b;">Sin perfume. La que usamos en la clínica.</p>
+              <div style="display: flex; align-items: baseline; gap: 8px; margin-top: auto; padding-top: 12px;">
+                <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: {{marca}};">S/&nbsp;37</span>
+                <span style="font-size: 14px; color: #8b9e98; text-decoration: line-through;">S/&nbsp;42</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 12px; border-radius: 12px; border: 1px solid {{marca}}; background: rgba(13, 59, 58, 0.06);">
+                <span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 5px; border: 2px solid {{marca}}; background: {{marca}};"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width: 12px; height: 12px;"><path d="m4.5 12.8 4.6 4.4L19.5 6.8"></path></svg></span>
+                <span style="font-size: 14px; font-weight: 600; color: {{marca}};">Añadido al pedido</span>
+              </div>
+            </div>
+          </div>
+          <div style="flex: 0 0 74%; display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; overflow: hidden; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+            <div style="position: relative; aspect-ratio: 3 / 2; background: #ffffff; border-bottom: 1px solid rgba(30, 92, 87, 0.12); display: flex; align-items: center; justify-content: center; padding: 12px;">
+              <img src="./equilibrio-gatos-castrados-1-a-7-anos-x--mtc8bhve-19ki.jpg" alt="Alimento gato esterilizado · 7,5 kg" style="display: block; width: 100%; height: 100%; object-fit: contain;">
+              <span style="position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 999px; background: {{acento}}; color: #122220; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;">−10&nbsp;%</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1; padding: 14px 16px 16px;">
+              <h3 style="font-size: 16px; line-height: 1.25; color: {{marca}};">Alimento gato esterilizado · 7,5 kg</h3>
+              <p style="font-size: 14px; line-height: 1.5; color: #4a5f5b;">Control de peso y cuidado urinario.</p>
+              <div style="display: flex; align-items: baseline; gap: 8px; margin-top: auto; padding-top: 12px;">
+                <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: {{marca}};">S/&nbsp;133</span>
+                <span style="font-size: 14px; color: #8b9e98; text-decoration: line-through;">S/&nbsp;148</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 12px; border-radius: 12px; border: 1px solid rgba(30, 92, 87, 0.2); background: transparent;">
+                <span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 5px; border: 2px solid rgba(30, 92, 87, 0.35); background: transparent;"></span>
+                <span style="font-size: 14px; font-weight: 600; color: #4a5f5b;">Añadir al pedido</span>
+              </div>
+            </div>
+          </div>
+          <div style="flex: 0 0 74%; display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; overflow: hidden; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+            <div style="position: relative; aspect-ratio: 3 / 2; background: #e6efe9; border-bottom: 1px dashed rgba(30, 92, 87, 0.35); display: flex; align-items: center; justify-content: center;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #8b9e98;">Foto del producto</span>
+              <span style="position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 999px; background: {{acento}}; color: #122220; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;">−5&nbsp;%</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1; padding: 14px 16px 16px;">
+              <h3 style="font-size: 16px; line-height: 1.25; color: {{marca}};">Desparasitante oral · 4 tabletas</h3>
+              <p style="font-size: 14px; line-height: 1.5; color: #4a5f5b;">Interno, de amplio espectro. Perro y gato.</p>
+              <div style="display: flex; align-items: baseline; gap: 8px; margin-top: auto; padding-top: 12px;">
+                <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: {{marca}};">S/&nbsp;55</span>
+                <span style="font-size: 14px; color: #8b9e98; text-decoration: line-through;">S/&nbsp;58</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 12px; border-radius: 12px; border: 1px solid rgba(30, 92, 87, 0.2); background: transparent;">
+                <span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 5px; border: 2px solid rgba(30, 92, 87, 0.35); background: transparent;"></span>
+                <span style="font-size: 14px; font-weight: 600; color: #4a5f5b;">Añadir al pedido</span>
+              </div>
+            </div>
+          </div>
+          <div style="flex: 0 0 74%; display: flex; flex-direction: column; background: #ffffff; border: 1px solid rgba(30, 92, 87, 0.15); border-radius: 20px; overflow: hidden; box-shadow: 0 1px 2px rgba(13, 59, 58, 0.05), 0 12px 28px -18px rgba(13, 59, 58, 0.28);">
+            <div style="position: relative; aspect-ratio: 3 / 2; background: #e6efe9; border-bottom: 1px dashed rgba(30, 92, 87, 0.35); display: flex; align-items: center; justify-content: center;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #8b9e98;">Foto del producto</span>
+              <span style="position: absolute; top: 12px; left: 12px; padding: 4px 10px; border-radius: 999px; background: {{acento}}; color: #122220; font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600;">−12&nbsp;%</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1; padding: 14px 16px 16px;">
+              <h3 style="font-size: 16px; line-height: 1.25; color: {{marca}};">Snacks dentales · paquete grande</h3>
+              <p style="font-size: 14px; line-height: 1.5; color: #4a5f5b;">Uno al día. Ayuda con el sarro.</p>
+              <div style="display: flex; align-items: baseline; gap: 8px; margin-top: auto; padding-top: 12px;">
+                <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: {{marca}};">S/&nbsp;34</span>
+                <span style="font-size: 14px; color: #8b9e98; text-decoration: line-through;">S/&nbsp;39</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 9px; margin-top: 12px; padding: 9px 12px; border-radius: 12px; border: 1px solid rgba(30, 92, 87, 0.2); background: transparent;">
+                <span style="display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 5px; border: 2px solid rgba(30, 92, 87, 0.35); background: transparent;"></span>
+                <span style="font-size: 14px; font-weight: 600; color: #4a5f5b;">Añadir al pedido</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 20px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="display: block; width: 24px; height: 8px; border-radius: 999px; background: {{marca}};"></span>
+            <span style="display: block; width: 8px; height: 8px; border-radius: 999px; background: rgba(30, 92, 87, 0.25);"></span>
+            <span style="display: block; width: 8px; height: 8px; border-radius: 999px; background: rgba(30, 92, 87, 0.25);"></span>
+            <span style="display: block; width: 8px; height: 8px; border-radius: 999px; background: rgba(30, 92, 87, 0.25);"></span>
+            <span style="display: block; width: 8px; height: 8px; border-radius: 999px; background: rgba(30, 92, 87, 0.25);"></span>
+            <span style="display: block; width: 8px; height: 8px; border-radius: 999px; background: rgba(30, 92, 87, 0.25);"></span>
+          </div>
+          <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(30, 92, 87, 0.25); color: #4a5f5b;">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px;"><path d="M8 5h3v14H8zM13 5h3v14h-3z"></path></svg>
+          </span>
+        </div>
+          </div>
 
   <!-- ================================================== FOOTER -->
   <div style="position: relative; overflow: hidden; background: {{marca}}; color: #ffffff; padding: 56px 20px 0;">
@@ -208,9 +323,9 @@
               <ellipse cx="22.6" cy="14.9" rx="2.1" ry="2.8" transform="rotate(22 22.6 14.9)"></ellipse>
             </g>
           </svg>
-          <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -0.025em; color: #ffffff;">PetCare</span>
+          <span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -0.025em; color: #ffffff;">San Antón</span>
         </div>
-        <p style="margin-top: 16px; line-height: 1.625; color: rgba(217, 234, 227, 0.8);">Clínica Veterinaria en Del Valle. Consulta, cirugía, laboratorio y urgencias 24 horas desde 2011.</p>
+        <p style="margin-top: 16px; line-height: 1.625; color: rgba(217, 234, 227, 0.8);">Clínica Veterinaria en Plaza Norte. Consulta, cirugía, laboratorio y urgencias 24 horas desde 2011.</p>
         <div style="display: flex; gap: 10px; margin-top: 24px;">
           <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.18); color: #d9eae3;">
             <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.9h2.54V9.85c0-2.52 1.5-3.91 3.77-3.91 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.9h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94z"></path></svg>
@@ -224,37 +339,16 @@
         </div>
       </div>
 
-      <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{acento}};">Navegación</div>
-        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Servicios</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">La clínica</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Equipo</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Reseñas</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Horarios</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Contacto</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Reservar cita</a>
-        </div>
-      </div>
+      
 
-      <div>
-        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{acento}};">Servicios</div>
-        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 16px;">
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Consulta general</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Vacunación y desparasitación</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Cirugía y esterilización</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Urgencias 24 horas</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Estética canina y felina</a>
-          <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Laboratorio e imagen</a>
-        </div>
-      </div>
+      
 
       <div>
         <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: {{acento}};">Contacto</div>
         <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 16px;">
           <div style="display: flex; align-items: flex-start; gap: 10px;">
             <svg viewBox="0 0 24 24" fill="none" stroke="rgba(217, 234, 227, 0.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;"><path d="M12 21.5s7-6.1 7-11.1a7 7 0 1 0-14 0c0 5 7 11.1 7 11.1z"></path><circle cx="12" cy="10.2" r="2.6"></circle></svg>
-            <a href="#" style="color: rgba(217, 234, 227, 0.75);">Av. Insurgentes Sur 1234, Col. Del Valle, 03100 Ciudad de México</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75);">Av. Alfredo Mendiola 1400, Independencia 15311</a>
           </div>
           <div style="display: flex; align-items: flex-start; gap: 10px;">
             <svg viewBox="0 0 24 24" fill="none" stroke="rgba(217, 234, 227, 0.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;"><path d="M6.3 3h3l1.5 3.8-1.9 1.4a12 12 0 0 0 5.9 5.9l1.4-1.9L20 13.7v3a2 2 0 0 1-2.2 2A16.6 16.6 0 0 1 4.3 5.2 2 2 0 0 1 6.3 3z"></path></svg>
@@ -262,7 +356,7 @@
           </div>
           <div style="display: flex; align-items: flex-start; gap: 10px;">
             <svg viewBox="0 0 24 24" fill="none" stroke="rgba(217, 234, 227, 0.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px;"><rect x="2.8" y="4.8" width="18.4" height="14.4" rx="2.4"></rect><path d="m3.4 7 7.5 5.4a2 2 0 0 0 2.2 0L20.6 7"></path></svg>
-            <a href="#" style="color: rgba(217, 234, 227, 0.75);">hola@petcare.mx</a>
+            <a href="#" style="color: rgba(217, 234, 227, 0.75);">gianfranco.caramutti@hotmail.com</a>
           </div>
         </div>
 
@@ -279,7 +373,7 @@
     </div>
 
     <div style="position: relative; display: flex; flex-direction: column; gap: 16px; margin-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.12); padding: 24px 0 96px; font-size: 14px; color: rgba(217, 234, 227, 0.6);">
-      <p>© 2026 PetCare. Todos los derechos reservados.</p>
+      <p>© 2026 San Antón. Todos los derechos reservados.</p>
       <div style="display: flex; flex-wrap: wrap; gap: 8px 20px;">
         <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Aviso de privacidad</a>
         <a href="#" style="color: rgba(217, 234, 227, 0.75); padding: 4px 0;">Términos de servicio</a>
@@ -288,9 +382,9 @@
     </div>
   </div>
 
-  <div style="flex-grow: 1; background: {{marca}};"></div>
+  
 
-</x-dc>
+</div></x-dc>
 
 <script data-dc-script data-props='{"acento":{"editor":"color","default":"#e8a33d","options":["#e8a33d","#c9722b","#6f9f7a","#c2557c"],"section":"Marca"},"marca":{"editor":"color","default":"#0d3b3a","options":["#0d3b3a","#123a52","#2c2a3d","#173d2a"],"section":"Marca"},"$preview":{"width":390,"height":5070}}'>
 class Component extends DCLogic {
