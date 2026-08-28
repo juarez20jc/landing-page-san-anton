@@ -183,3 +183,32 @@ export const Logotipo = ({ className = '' }) => (
     </g>
   </svg>
 )
+
+/* --- tienda ------------------------------------------------------------- */
+
+export const IconoCarrito = (p) => (
+  <svg {...base} {...p}>
+    <path d="M3 4h2.2l2 10.4a1.8 1.8 0 0 0 1.8 1.4h7.6a1.8 1.8 0 0 0 1.8-1.4L20 7.2H6" />
+    <circle cx="9.5" cy="19.6" r="1.5" />
+    <circle cx="17" cy="19.6" r="1.5" />
+  </svg>
+)
+
+export const IconoMas = (p) => (
+  <svg {...base} {...p}>
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+)
+
+export const IconoPapelera = (p) => (
+  <svg {...base} {...p}>
+    <path d="M4.5 6.5h15M9.5 6.5V4.8a1.3 1.3 0 0 1 1.3-1.3h2.4a1.3 1.3 0 0 1 1.3 1.3v1.7" />
+    <path d="M6.6 6.5 7.5 19a1.6 1.6 0 0 0 1.6 1.5h5.8a1.6 1.6 0 0 0 1.6-1.5l.9-12.5" />
+  </svg>
+)
+
+export const IconoFlechaIzq = (p) => (
+  <svg {...base} {...p}>
+    <path d="M19.5 12h-15M10.5 6l-6 6 6 6" />
+  </svg>
+)

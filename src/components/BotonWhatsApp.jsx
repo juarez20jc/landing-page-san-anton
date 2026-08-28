@@ -17,6 +17,7 @@ export default function BotonWhatsApp({ visible }) {
       target="_blank"
       rel="noopener"
       aria-label={`Escribir a ${clinica.nombre} por WhatsApp`}
+      inert={visible ? undefined : true}
       className={`fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-5 z-40 flex h-14 items-center gap-3 rounded-full bg-[#25d366] pl-4 pr-4 text-tinta shadow-[0_12px_30px_-10px_rgb(37_211_102/0.75)] transition-[opacity,transform,padding] duration-300 hover:bg-[#1fbe5b] sm:pr-5 ${
         visible
           ? 'translate-y-0 opacity-100'

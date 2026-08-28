@@ -379,3 +379,106 @@
     }
   }
 }
+
+/* =========================================================================
+   TIENDA — tarjetas de producto y respuesta al toque
+   ========================================================================= */
+
+@layer components {
+  /* La tarjeta se inclina y se desplaza al pasar el cursor. Se aplica al
+     elemento entero, no sólo a la imagen, para que el gesto se sienta como
+     coger la caja del estante. */
+  .tarjeta-viva {
+    transition:
+      transform 0.32s cubic-bezier(0.2, 0.8, 0.3, 1),
+      box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+
+  /* :has() cubre el foco por teclado: quien tabula ve lo mismo que quien
+     pasa el ratón. */
+  .tarjeta-viva:hover,
+  .tarjeta-viva:has(:focus-visible) {
+    transform: translate3d(0.5rem, -0.35rem, 0) rotate(-1.25deg);
+    box-shadow:
+      0 2px 4px rgb(13 59 58 / 0.06),
+      0 22px 40px -22px rgb(13 59 58 / 0.45);
+  }
+
+  .tarjeta-viva:active {
+    transform: translate3d(0.25rem, -0.1rem, 0) rotate(-0.5deg) scale(0.995);
+    transition-duration: 0.12s;
+  }
+
+  /* El botón se hunde y suelta un halo al pulsarlo. */
+  .boton:active,
+  .boton-pedido:active {
+    transform: scale(0.955);
+    transition-duration: 0.09s;
+  }
+
+  .boton-pedido {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    inline-size: 100%;
+    min-block-size: 2.75rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgb(30 92 87 / 0.2);
+    border-radius: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-tinta-suave);
+    transition:
+      background-color 0.18s ease,
+      border-color 0.18s ease,
+      color 0.18s ease,
+      transform 0.18s ease;
+  }
+
+  .boton-pedido:hover {
+    border-color: rgb(30 92 87 / 0.45);
+    background: rgb(217 234 227 / 0.45);
+  }
+
+  .boton-pedido[aria-pressed='true'] {
+    border-color: var(--color-quirofano);
+    background: rgb(13 59 58 / 0.06);
+    color: var(--color-quirofano);
+  }
+
+  /* Al marcar, la casilla da un golpe corto: confirma sin robar la atención. */
+  .boton-pedido[aria-pressed='true'] .casilla {
+    animation: marcado 0.34s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+  }
+}
+
+@keyframes marcado {
+  0% {
+    transform: scale(0.6);
+  }
+  60% {
+    transform: scale(1.18);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Quien pide menos movimiento no recibe inclinaciones ni rebotes: sólo el
+   cambio de color, que sigue diciendo lo mismo. */
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta-viva:hover,
+  .tarjeta-viva:has(:focus-visible),
+  .tarjeta-viva:active {
+    transform: none;
+  }
+
+  .boton:active,
+  .boton-pedido:active {
+    transform: none;
+  }
+
+  .boton-pedido[aria-pressed='true'] .casilla {
+    animation: none;
+  }
+}

@@ -16,11 +16,11 @@ const consultar = (q) =>
  * arrancar `reanudar` ms después del último gesto. Al pasar de la última
  * tarjeta vuelve a la primera.
  */
-export function useCarrusel(total, { intervalo = 2000, reanudar = 3000 } = {}) {
+export function useCarrusel(total, { intervalo = 2000, reanudar = 2000, siempre = false } = {}) {
   const pista = useRef(null)
   const relojGesto = useRef(null)
 
-  const [activo, setActivo] = useState(() => consultar(SOLO_TACTIL))
+  const [activo, setActivo] = useState(() => siempre || consultar(SOLO_TACTIL))
   const [indice, setIndice] = useState(0)
   const [detenido, setDetenido] = useState(false) // pausa explícita del botón
   const [esperando, setEsperando] = useState(false) // ventana tras un gesto
@@ -29,11 +29,11 @@ export function useCarrusel(total, { intervalo = 2000, reanudar = 3000 } = {}) {
   // ¿Estamos en un ancho de celular o tablet?
   useEffect(() => {
     const mq = window.matchMedia(SOLO_TACTIL)
-    const alCambiar = () => setActivo(mq.matches)
+    const alCambiar = () => setActivo(siempre || mq.matches)
     alCambiar()
     mq.addEventListener('change', alCambiar)
     return () => mq.removeEventListener('change', alCambiar)
-  }, [])
+  }, [siempre])
 
   const sangria = (p) => parseFloat(getComputedStyle(p).paddingInlineStart) || 0
 
@@ -133,11 +133,30 @@ export function useCarrusel(total, { intervalo = 2000, reanudar = 3000 } = {}) {
     return () => clearInterval(id)
   }, [activo, detenido, esperando, aLaVista, total, intervalo])
 
+  // Las flechas de escritorio: un paso a cada lado, con vuelta a los
+  // extremos para que nunca se queden sin efecto.
+  const mover = useCallback(
+    (paso) => {
+      marcarGesto()
+      setIndice((i) => {
+        const destino = (i + paso + total) % total
+        irA(destino)
+        return destino
+      })
+    },
+    [irA, marcarGesto, total],
+  )
+
   return {
     pista,
     activo,
     indice,
-    irA,
+    irA: (i) => {
+      marcarGesto()
+      irA(i)
+    },
+    anterior: () => mover(-1),
+    siguiente: () => mover(1),
     detenido,
     alternarPausa: () => setDetenido((d) => !d),
   }

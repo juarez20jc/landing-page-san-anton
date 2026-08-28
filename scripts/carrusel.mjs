@@ -35,7 +35,7 @@ const posicion = (p, i) =>
   console.log('\n— ESCRITORIO 1440 —')
   const { ctx, p } = await abrir(1440, 900)
   const pistas = await p.locator('.pista-carrusel').count()
-  pistas === 0 ? ok('no hay carrusel: sigue la rejilla') : mal(`hay ${pistas} carruseles en escritorio`)
+  pistas === 2 ? ok('en escritorio sólo quedan los dos de tienda') : mal(`hay ${pistas} carruseles en escritorio`)
 
   const cols = await p.evaluate(() => {
     const ul = [...document.querySelectorAll('#servicios ul')].find((u) => u.children.length === 6)
@@ -43,8 +43,8 @@ const posicion = (p, i) =>
   })
   cols === 3 ? ok('los 6 servicios en 3 columnas') : mal(`la rejilla de servicios tiene ${cols} columnas`)
 
-  const puntos = await p.locator('button[aria-label^="Ir a la tarjeta"]').count()
-  puntos === 0 ? ok('sin controles de carrusel') : mal(`${puntos} controles visibles en escritorio`)
+  const puntos = await p.locator('#servicios button[aria-label^="Ir a la tarjeta"]').count()
+  puntos === 0 ? ok('servicios sigue en rejilla, sin controles') : mal(`${puntos} controles en servicios`)
   await ctx.close()
 }
 
@@ -57,7 +57,7 @@ for (const [w, h, nombre] of [
   const { ctx, p } = await abrir(w, h)
 
   const pistas = await p.locator('.pista-carrusel').count()
-  pistas === 2 ? ok('carrusel en servicios y en reseñas') : mal(`se esperaban 2 carruseles, hay ${pistas}`)
+  pistas === 4 ? ok('carrusel en servicios, reseñas y las dos de tienda') : mal(`se esperaban 4 carruseles, hay ${pistas}`)
   if (pistas < 1) {
     await ctx.close()
     continue
@@ -88,13 +88,13 @@ for (const [w, h, nombre] of [
   await p.mouse.down()
   await p.mouse.up()
   const b0 = await posicion(p, 0)
-  await p.waitForTimeout(2200) // dentro de la ventana de 3 s: no debe moverse
+  await p.waitForTimeout(1400) // dentro de la ventana de 2 s: no debe moverse
   const b1 = await posicion(p, 0)
-  b1 === b0 ? ok(`se detiene al tocar (${b0} px sin cambio en 2,2 s)`) : mal(`siguió avanzando tras el toque: ${b0} → ${b1}`)
+  b1 === b0 ? ok(`se detiene al tocar (${b0} px sin cambio en 1,4 s)`) : mal(`siguió avanzando tras el toque: ${b0} → ${b1}`)
 
-  await p.waitForTimeout(3200) // pasados los 3 s debe haber vuelto a avanzar
+  await p.waitForTimeout(3400) // 2 s de espera + un tic de avance, con margen
   const b2 = await posicion(p, 0)
-  b2 !== b1 ? ok(`reanuda tras 3 s (${b1} → ${b2} px)`) : mal('no reanudó el avance tras la espera')
+  b2 !== b1 ? ok(`reanuda tras 2 s (${b1} → ${b2} px)`) : mal('no reanudó el avance tras la espera')
 
   // --- al llegar al final vuelve a la primera
   await p.evaluate(() => {
@@ -102,9 +102,18 @@ for (const [w, h, nombre] of [
     const ultimo = t.children[t.children.length - 1]
     t.scrollTo({ left: ultimo.offsetLeft, behavior: 'instant' })
   })
-  await p.waitForTimeout(3600)
-  const vuelta = await posicion(p, 0)
-  vuelta < 40 ? ok(`desde la última vuelve a la primera (${vuelta} px)`) : mal(`no volvió al inicio: quedó en ${vuelta} px`)
+  // Se vigila durante unos segundos en vez de mirar una sola vez: en cuanto
+  // da la vuelta sigue avanzando, y un vistazo tarde ya lo pilla en la
+  // segunda tarjeta.
+  let vuelta = null
+  for (let intento = 0; intento < 25 && vuelta === null; intento++) {
+    await p.waitForTimeout(200)
+    const x = await posicion(p, 0)
+    if (x < 40) vuelta = x
+  }
+  vuelta !== null
+    ? ok(`desde la última vuelve a la primera (${vuelta} px)`)
+    : mal('no volvió al inicio en 5 s')
 
   // --- controles
   const puntos = await p.locator('#servicios button[aria-label^="Ir a la tarjeta"]').count()
@@ -121,10 +130,10 @@ for (const [w, h, nombre] of [
   } else mal('falta el botón de pausa')
 
   // --- reseñas
-  const r0 = await posicion(p, 1)
+  const r0 = await posicion(p, 2)
   await p.locator('#testimonios').scrollIntoViewIfNeeded()
   await p.waitForTimeout(2600)
-  const r1 = await posicion(p, 1)
+  const r1 = await posicion(p, 2)
   r1 > r0 ? ok(`las reseñas también avanzan solas (${r0} → ${r1} px)`) : mal(`las reseñas no avanzan: ${r0} → ${r1}`)
 
   await ctx.close()

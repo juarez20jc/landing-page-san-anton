@@ -69,7 +69,7 @@ export const servicios = [
     icono: 'consulta',
     titulo: 'Consulta general',
     texto: 'Revisión completa, diagnóstico y plan de tratamiento. Cuarenta minutos sin prisas para resolver todas tus dudas.',
-    detalle: 'Desde $450',
+    detalle: 'Desde S/99',
   },
   {
     icono: 'vacuna',
@@ -211,3 +211,159 @@ export const enlaceMapa = `https://www.google.com/maps/search/?api=1&query=${enc
    devuelve una ficha pequeña en vez de rellenar el marco. El enlace de
    «cómo llegar» sí usa la dirección escrita, que es lo útil al tocarlo. */
 export const enlaceMapaEmbed = `https://www.google.com/maps?q=${clinica.geo.lat},${clinica.geo.lng}&z=17&output=embed`
+
+/* --- PORTADAS DEL HERO ---------------------------------------------------
+   El hero rota entre estas tres. Los botones, las estrellas y las cifras no
+   cambian: sólo el fondo, la foto y el texto. Para añadir una cuarta basta
+   con meterla aquí. `foto` es el nombre en public/img sin extensión. */
+export const portadas = [
+  {
+    id: 'general',
+    fondo: '#0d3b3a',
+    etiqueta: 'Urgencias 24/7',
+    lugar: `${clinica.direccion.zona} · ${clinica.direccion.ciudad}`,
+    titulo: 'Cuidamos al que te acompaña todos los días',
+    texto: `Consulta, vacunación, cirugía, estética y laboratorio en ${clinica.direccion.zona}, con urgencias las 24 horas. Catorce años y doce mil pacientes después, seguimos atendiendo sin prisas.`,
+    foto: '/img/portada',
+    alt: 'Una veterinaria de San Antón, sonriente y en uniforme azul, junto a un cachorro de golden retriever sobre la mesa de exploración',
+  },
+  {
+    id: 'urgencias',
+    fondo: '#122220',
+    etiqueta: 'Guardia activa',
+    lugar: 'Las 24 horas, todo el año',
+    titulo: 'Aquí siempre hay alguien despierto',
+    texto: 'Urgencias de verdad: quirófano, laboratorio y hospitalización en el mismo sitio. No te mandamos a otra clínica a mitad de la noche.',
+    foto: '/img/portada-2',
+    alt: 'La fachada iluminada de la Clínica Veterinaria San Antón al anochecer',
+  },
+  {
+    id: 'consulta',
+    fondo: '#122220',
+    etiqueta: 'Consulta sin prisas',
+    lugar: 'Treinta minutos por cita',
+    titulo: '30 minutos dedicados exclusivamente a tu mascota',
+    texto: 'Evaluamos a tu mascota sin prisas. Saldrás con un diagnóstico claro, los pasos a seguir y total transparencia en los costos.',
+    foto: '/img/portada-3',
+    alt: 'La entrada de San Antón de día, con una clienta y su perro cruzando hacia la puerta',
+  },
+]
+
+/* --- PRODUCTOS -----------------------------------------------------------
+   PRECIOS Y NOMBRES DE EJEMPLO: cámbialos por los de verdad.
+
+   Sólo se apunta el precio DE LISTA y el descuento; el precio final lo
+   calcula `conPrecio()` más abajo, para que la etiqueta del descuento y lo
+   que paga el cliente no puedan contradecirse.
+
+   foto: nombre en public/img sin extensión, o null si todavía no hay. */
+export const liquidacion = [
+  {
+    id: 'cama',
+    nombre: 'Cama ortopédica para perro grande',
+    texto: 'Espuma con memoria y funda lavable a máquina. Talla L.',
+    lista: 189,
+    descuento: 70,
+    foto: '/img/prod-cama',
+  },
+  {
+    id: 'transportadora',
+    nombre: 'Transportadora rígida talla M',
+    texto: 'Homologada para viaje. Hasta 12 kg, con puerta metálica.',
+    lista: 145,
+    descuento: 60,
+    foto: '/img/prod-transportadora',
+  },
+  {
+    id: 'rascador',
+    nombre: 'Rascador de tres niveles',
+    texto: 'Sisal natural y plataforma alta. 1,10 m.',
+    lista: 210,
+    descuento: 76,
+    foto: '/img/prod-rascador',
+  },
+  {
+    id: 'tunel',
+    nombre: 'Túnel de juego para gato',
+    texto: 'Plegable, con abertura lateral y juguete colgante.',
+    lista: 79,
+    descuento: 90,
+    foto: '/img/prod-tunel',
+  },
+  {
+    id: 'comedero',
+    nombre: 'Comedero elevado de acero',
+    texto: 'Doble cuenco, altura regulable. Para razas medianas.',
+    lista: 95,
+    descuento: 30,
+    foto: null,
+  },
+  {
+    id: 'cepillado',
+    nombre: 'Kit de cepillado y corte de uñas',
+    texto: 'Cepillo deslanador, cortaúñas y lima. Perro o gato.',
+    lista: 68,
+    descuento: 30,
+    foto: null,
+  },
+]
+
+export const masVendidos = [
+  {
+    id: 'alimento-perro',
+    nombre: 'Alimento seco perro adulto · 15 kg',
+    texto: 'La bolsa que más sale. Razas medianas y grandes.',
+    lista: 179,
+    descuento: 10,
+    foto: '/img/prod-alimento-perro',
+  },
+  {
+    id: 'antipulgas',
+    nombre: 'Antipulgas en pipeta · 3 meses',
+    texto: 'Una pipeta al mes. Perro de 10 a 25 kg.',
+    lista: 96,
+    descuento: 8,
+    foto: '/img/prod-antipulgas',
+  },
+  {
+    id: 'arena',
+    nombre: 'Arena aglomerante · 10 kg',
+    texto: 'Sin perfume. La que usamos en la clínica.',
+    lista: 42,
+    descuento: 12,
+    foto: '/img/prod-arena',
+  },
+  {
+    id: 'alimento-gato',
+    nombre: 'Alimento gato esterilizado · 7,5 kg',
+    texto: 'Control de peso y cuidado urinario.',
+    lista: 148,
+    descuento: 10,
+    foto: '/img/prod-alimento-gato',
+  },
+  {
+    id: 'desparasitante',
+    nombre: 'Desparasitante oral · 4 tabletas',
+    texto: 'Interno, de amplio espectro. Perro y gato.',
+    lista: 58,
+    descuento: 5,
+    foto: null,
+  },
+  {
+    id: 'snacks',
+    nombre: 'Snacks dentales · paquete grande',
+    texto: 'Uno al día. Ayuda con el sarro.',
+    lista: 39,
+    descuento: 12,
+    foto: null,
+  },
+]
+
+/** Precio final, redondeado al sol. La etiqueta sale del mismo dato. */
+export const precioFinal = (p) => Math.round(p.lista * (1 - p.descuento / 100))
+
+/** Soles con el separador que se usa en Perú. */
+export const soles = (n) => `S/ ${n.toLocaleString('es-PE')}`
+
+/** Todos los productos, para que el carrito pueda buscar por id. */
+export const catalogo = [...liquidacion, ...masVendidos]

@@ -73,7 +73,7 @@ export default function Footer() {
           </div>
 
           {/* ---------------------------------------------------- navegación */}
-          <nav aria-labelledby="pie-nav">
+          <nav aria-labelledby="pie-nav" className="hidden lg:block">
             <h2 id="pie-nav" className="etiqueta-dato text-ambar">
               Navegación
             </h2>
@@ -94,7 +94,7 @@ export default function Footer() {
           </nav>
 
           {/* ----------------------------------------------------- servicios */}
-          <nav aria-labelledby="pie-servicios">
+          <nav aria-labelledby="pie-servicios" className="hidden lg:block">
             <h2 id="pie-servicios" className="etiqueta-dato text-ambar">
               Servicios
             </h2>

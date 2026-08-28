@@ -12,7 +12,9 @@
     "capturas": "node scripts/capturas.mjs",
     "secciones": "node scripts/secciones.mjs",
     "auditar": "node scripts/auditoria.mjs",
-    "carrusel": "node scripts/carrusel.mjs"
+    "carrusel": "node scripts/carrusel.mjs",
+    "revisar": "node scripts/revisar.mjs",
+    "importar-imagenes": "node scripts/importar-imagenes.mjs"
   },
   "dependencies": {
     "react": "^19.2.8",

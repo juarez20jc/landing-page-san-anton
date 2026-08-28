@@ -52,17 +52,17 @@ export default function Ubicacion() {
                 title={`Mapa con la ubicación de ${clinica.nombre} en ${direccionUnaLinea}`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="aspect-[4/3] w-full rounded-[0.85rem] border-0 bg-menta"
+                className="aspect-[21/10] w-full rounded-[0.85rem] border-0 bg-menta lg:aspect-[4/3]"
               />
             </div>
 
-            <ul className="grid gap-3">
+            <ul className="grid gap-2 lg:gap-3">
               {DATOS.map(({ Icono, etiqueta, valor, pie, href, externo }) => (
                 <li key={etiqueta}>
                   <a
                     href={href}
                     {...(externo ? { target: '_blank', rel: 'noopener' } : {})}
-                    className="group flex items-start gap-4 rounded-ficha border border-eucalipto/15 bg-white p-4 transition-colors hover:border-eucalipto/40 hover:bg-menta/40"
+                    className="group flex items-start gap-3.5 rounded-ficha border border-eucalipto/15 bg-white p-3.5 lg:gap-4 lg:p-4 transition-colors hover:border-eucalipto/40 hover:bg-menta/40"
                   >
                     <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-menta text-quirofano transition-colors group-hover:bg-quirofano group-hover:text-ambar">
                       <Icono className="h-5 w-5" />
@@ -70,7 +70,7 @@ export default function Ubicacion() {
                     <span className="min-w-0 flex-1">
                       <span className="etiqueta-dato block text-eucalipto">{etiqueta}</span>
                       <span className="mt-1 block font-semibold text-quirofano [overflow-wrap:anywhere]">{valor}</span>
-                      <span className="mt-0.5 block text-sm text-tinta-suave">{pie}</span>
+                      <span className="mt-0.5 hidden text-sm text-tinta-suave lg:block">{pie}</span>
                     </span>
                     <IconoFlecha className="mt-2 h-5 w-5 shrink-0 text-eucalipto/50 transition-transform group-hover:translate-x-1" />
                   </a>
