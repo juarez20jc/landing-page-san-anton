@@ -1,7 +1,20 @@
 import { precioFinal, soles } from '../../data/clinica.js'
 import { usePedido } from '../../hooks/usePedido.jsx'
 import { Foto } from './Primitivas.jsx'
-import { IconoCheck } from '../icons/Iconos.jsx'
+import {
+  IconoCheck,
+  IconoCepillo,
+  IconoComedero,
+  IconoPastillas,
+} from '../icons/Iconos.jsx'
+
+/* Mientras no llegue la foto del artículo, la tarjeta enseña un dibujo suyo.
+   La clave sale de `dibujo` en src/data/clinica.js. */
+const DIBUJOS = {
+  comedero: <IconoComedero className="h-12 w-12" />,
+  cepillo: <IconoCepillo className="h-12 w-12" />,
+  pastillas: <IconoPastillas className="h-12 w-12" />,
+}
 
 /**
  * Una tarjeta de producto: foto, descuento, precio y la casilla que lo mete
@@ -19,10 +32,13 @@ export default function TarjetaProducto({ producto }) {
 
   return (
     <li className="tarjeta-viva flex flex-col overflow-hidden rounded-ficha border border-eucalipto/15 bg-white shadow-[0_1px_2px_rgb(13_59_58/0.05),0_12px_28px_-18px_rgb(13_59_58/0.28)]">
+      {/* El marco manda sobre la foto, no al revés: la imagen va posicionada
+          contra los cuatro lados, así una foto vertical se ajusta dentro en
+          vez de estirar la tarjeta y descuadrar la fila entera. */}
       <div
-        className={`relative flex aspect-[3/2] items-center justify-center sm:aspect-[4/3] ${
+        className={`relative aspect-[3/2] overflow-hidden sm:aspect-[4/3] ${
           producto.foto
-            ? 'border-b border-eucalipto/12 bg-white p-3'
+            ? 'border-b border-eucalipto/12 bg-white'
             : 'border-b border-dashed border-eucalipto/35 bg-menta/45'
         }`}
       >
@@ -33,10 +49,13 @@ export default function TarjetaProducto({ producto }) {
             width={320}
             height={240}
             sizes="(min-width: 1024px) 18rem, 74vw"
-            className="h-full w-full object-contain"
+            className="absolute inset-0 h-full w-full object-contain p-3"
           />
         ) : (
-          <span className="etiqueta-dato text-tinta-suave">Foto del producto</span>
+          <span className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-eucalipto/45">
+            {DIBUJOS[producto.dibujo] ?? null}
+            <span className="etiqueta-dato text-tinta-suave">Foto pendiente</span>
+          </span>
         )}
 
         <span className="absolute left-3 top-3 rounded-full bg-ambar px-2.5 py-1 font-mono text-[0.7rem] font-semibold text-tinta">

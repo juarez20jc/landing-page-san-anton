@@ -212,3 +212,42 @@ export const IconoFlechaIzq = (p) => (
     <path d="M19.5 12h-15M10.5 6l-6 6 6 6" />
   </svg>
 )
+
+export const IconoMenos = (p) => (
+  <svg {...base} {...p}>
+    <path d="M5 12h14" />
+  </svg>
+)
+
+/* --- dibujos de producto ------------------------------------------------
+   Se usan en la tarjeta cuando todavía no hay foto del artículo. Son un
+   dibujo declarado, no una foto falsa: se ve de lejos qué se vende y queda
+   claro que falta la imagen buena. */
+
+export const IconoComedero = (p) => (
+  <svg {...base} {...p}>
+    <path d="M3.2 10.5h7.4l-1 4.2a1.7 1.7 0 0 1-1.7 1.3H5.9a1.7 1.7 0 0 1-1.7-1.3z" />
+    <path d="M13.4 10.5h7.4l-1 4.2a1.7 1.7 0 0 1-1.7 1.3h-2a1.7 1.7 0 0 1-1.7-1.3z" />
+    <path d="M4.5 19.8h15M6.6 16v3.8M17.4 16v3.8" />
+    <path d="M8.5 7.4c0-1.4 1.6-1.4 1.6-2.8M14 7.4c0-1.4 1.6-1.4 1.6-2.8" />
+  </svg>
+)
+
+export const IconoCepillo = (p) => (
+  <svg {...base} {...p}>
+    <rect x="3" y="4.6" width="11.5" height="5.2" rx="2.2" />
+    <path d="M5.4 9.8v3M8 9.8v3M10.6 9.8v3M13 9.8v3" />
+    <path d="M17.6 4.8 20.4 7l-6.6 6.6-2.8-2.8z" />
+    <path d="M11 10.8 8.4 20l4.2-2.2 1.2 3 2-6.2" />
+  </svg>
+)
+
+export const IconoPastillas = (p) => (
+  <svg {...base} {...p}>
+    <rect x="3.4" y="5.6" width="17.2" height="12.8" rx="2.2" />
+    <circle cx="8.4" cy="10.2" r="2" />
+    <circle cx="15.6" cy="10.2" r="2" />
+    <circle cx="8.4" cy="14.6" r="2" />
+    <circle cx="15.6" cy="14.6" r="2" />
+  </svg>
+)

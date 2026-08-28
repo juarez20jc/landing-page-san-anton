@@ -60,7 +60,7 @@ const abrir = async (w, h) => {
   }
 
   const conFoto = await p.locator('#liquidacion img, #productos img').count()
-  conFoto === 8 ? ok('8 fotos de producto colocadas') : mal(`hay ${conFoto} fotos de producto`)
+  conFoto === 12 ? ok('los 12 productos con foto') : mal(`hay ${conFoto} fotos de producto de 12`)
 
   // --- carrito
   const vacio = await p.locator('button[aria-label="Tu pedido está vacío"]').evaluate(
@@ -86,19 +86,46 @@ const abrir = async (w, h) => {
   const filas = await panel.locator('li').count()
   filas === 2 ? ok('el panel lista los 2 productos') : mal(`el panel lista ${filas}`)
 
+  // --- cantidades
+  const totalDe = async () =>
+    +(await panel.locator('p:has(> span:text("Total")) span').last().innerText()).replace(/\D/g, '')
+  const totalUno = await totalDe()
+  await panel.locator('button[aria-label^="Una unidad más"]').first().click()
+  await panel.locator('button[aria-label^="Una unidad más"]').first().click()
+  await p.waitForTimeout(300)
+  const totalTres = await totalDe()
+  const unidades = await panel.locator('span[aria-live="polite"]').first().innerText()
+  unidades.trim().startsWith('3') ? ok('el + sube la cantidad a 3') : mal(`el contador dice «${unidades.trim()}»`)
+  totalTres > totalUno ? ok(`el total sigue a la cantidad: S/ ${totalUno} → S/ ${totalTres}`) : mal(`el total no cambió: ${totalUno} → ${totalTres}`)
+
   const wa = await panel.locator('a[href*="wa.me"]').getAttribute('href')
   const texto = decodeURIComponent(wa.split('text=')[1] ?? '')
-  texto.includes('Total:') && texto.split('•').length === 3
-    ? ok('el enlace de WhatsApp lleva los 2 productos y el total')
-    : mal(`el mensaje de WhatsApp no cuadra: ${texto.slice(0, 60)}`)
+  const items = texto.split('\n').filter((l) => l.startsWith('- '))
+  texto.includes('*Total:') && texto.includes('3 ×') && items.length === 2
+    ? ok('el mensaje de WhatsApp usa lista y negrita, con cantidades y total')
+    : mal(`el mensaje de WhatsApp no cuadra: ${texto.slice(0, 70)}`)
 
-  await panel.locator('button[aria-label^="Quitar"]').first().click()
+  // bajar hasta cero saca el producto del pedido
+  for (let n = 0; n < 3; n++) {
+    await panel.locator('button[aria-label^="Una unidad menos"], button[aria-label^="Quitar"]').first().click()
+    await p.waitForTimeout(200)
+  }
+  ;(await panel.locator('li').count()) === 1
+    ? ok('bajar a cero saca el producto del pedido')
+    : mal(`tras bajar a cero quedan ${await panel.locator('li').count()} líneas`)
+
+  // y la papelera saca el que queda
+  await panel.locator('button[aria-label^="Quitar"]').last().click()
   await p.waitForTimeout(300)
-  ;(await panel.locator('li').count()) === 1 ? ok('se puede quitar un producto del pedido') : mal('quitar no funcionó')
+  ;(await panel.locator('li').count()) === 0 ? ok('la papelera vacía la última línea') : mal('la papelera no funcionó')
 
   await p.keyboard.press('Escape')
   await p.waitForTimeout(300)
   ;(await panel.isVisible()) ? mal('Esc no cierra el panel') : ok('Esc cierra el panel')
+
+  // se vuelve a marcar uno para comprobar que aguanta la recarga
+  await p.locator('#productos li button[aria-pressed]').first().click()
+  await p.waitForTimeout(300)
 
   // --- el pedido sobrevive a la recarga
   await p.reload({ waitUntil: 'load' })

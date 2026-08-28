@@ -7,7 +7,12 @@ import sharp from 'sharp'
 const ORIGEN = 'diseno'
 const DESTINO = 'public/img'
 
-/* [archivo en el lienzo, nombre final, ancho 1x] */
+/* [archivo en el lienzo, nombre final, ancho 1x, opciones]
+
+   recorte: { top, left, width, height } para quitar de la foto lo que no es
+            producto — el reclamo publicitario de arriba, sobre todo.
+   recortar: true pasa un trim() que come el borde blanco uniforme, para que
+            el artículo llene el marco en vez de nadar en él. */
 const IMAGENES = [
   ['portada-mt4tb52e-glbo.jpg', 'portada', 512],
   ['gemini_generated_image_nl5an0nl5an0nl5a-mtc7qyhj-lbt5.jpg', 'portada-2', 512],
@@ -22,12 +27,16 @@ const IMAGENES = [
   ['proteggo-3m-small-4-5-a-10kg-250mg-antip-mtc8a4jh-w9vn.webp', 'prod-antipulgas', 320],
   ['hc000486_m-mtc8b3hd-c5rf.jpg', 'prod-arena', 320],
   ['equilibrio-gatos-castrados-1-a-7-anos-x--mtc8bhve-19ki.jpg', 'prod-alimento-gato', 320],
+  // Las tres que faltaban, ya con la foto del artículo que vende la clínica
+  ['comedero-elevado.png', 'prod-comedero', 320, { recortar: true }],
+  ['kit-peluqueria.png', 'prod-cepillado', 320, { recorte: { top: 212, left: 0, width: 1000, height: 788 }, recortar: true }],
+  ['endovet-ces.png', 'prod-desparasitante', 320, { recortar: true }],
 ]
 
 fs.mkdirSync(DESTINO, { recursive: true })
 
 let total = 0
-for (const [origen, nombre, ancho] of IMAGENES) {
+for (const [origen, nombre, ancho, opciones = {}] of IMAGENES) {
   const entrada = path.join(ORIGEN, origen)
   if (!fs.existsSync(entrada)) {
     console.log(`  ! falta ${origen}`)
@@ -35,8 +44,15 @@ for (const [origen, nombre, ancho] of IMAGENES) {
   }
   for (const [suf, w] of [['', ancho], ['@2x', ancho * 2]]) {
     const salida = path.join(DESTINO, `${nombre}${suf}.webp`)
-    const buf = await sharp(entrada)
+    // El recorte y el trim van en pasadas separadas: sharp aplica trim antes
+    // que extract y el área pedida deja de existir.
+    let fuente = entrada
+    if (opciones.recorte) fuente = await sharp(entrada).extract(opciones.recorte).toBuffer()
+    if (opciones.recortar) fuente = await sharp(fuente).trim().toBuffer()
+
+    const buf = await sharp(fuente)
       .resize({ width: w, withoutEnlargement: true })
+      .flatten({ background: '#ffffff' })
       .webp({ quality: 80 })
       .toBuffer()
     fs.writeFileSync(salida, buf)

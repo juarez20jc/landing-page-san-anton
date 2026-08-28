@@ -256,13 +256,14 @@ export const portadas = [
    calcula `conPrecio()` más abajo, para que la etiqueta del descuento y lo
    que paga el cliente no puedan contradecirse.
 
-   foto: nombre en public/img sin extensión, o null si todavía no hay. */
+   foto:   nombre en public/img sin extensión, o null si todavía no hay.
+   dibujo: qué icono enseñar mientras no llegue la foto (ver TarjetaProducto). */
 export const liquidacion = [
   {
     id: 'cama',
     nombre: 'Cama ortopédica para perro grande',
     texto: 'Espuma con memoria y funda lavable a máquina. Talla L.',
-    lista: 189,
+    lista: 520,
     descuento: 70,
     foto: '/img/prod-cama',
   },
@@ -270,7 +271,7 @@ export const liquidacion = [
     id: 'transportadora',
     nombre: 'Transportadora rígida talla M',
     texto: 'Homologada para viaje. Hasta 12 kg, con puerta metálica.',
-    lista: 145,
+    lista: 320,
     descuento: 60,
     foto: '/img/prod-transportadora',
   },
@@ -278,7 +279,7 @@ export const liquidacion = [
     id: 'rascador',
     nombre: 'Rascador de tres niveles',
     texto: 'Sisal natural y plataforma alta. 1,10 m.',
-    lista: 210,
+    lista: 420,
     descuento: 76,
     foto: '/img/prod-rascador',
   },
@@ -286,25 +287,27 @@ export const liquidacion = [
     id: 'tunel',
     nombre: 'Túnel de juego para gato',
     texto: 'Plegable, con abertura lateral y juguete colgante.',
-    lista: 79,
-    descuento: 90,
+    lista: 89,
+    descuento: 55,
     foto: '/img/prod-tunel',
   },
   {
     id: 'comedero',
     nombre: 'Comedero elevado de acero',
     texto: 'Doble cuenco, altura regulable. Para razas medianas.',
-    lista: 95,
+    lista: 130,
     descuento: 30,
-    foto: null,
+    foto: '/img/prod-comedero',
+    dibujo: 'comedero',
   },
   {
     id: 'cepillado',
-    nombre: 'Kit de cepillado y corte de uñas',
-    texto: 'Cepillo deslanador, cortaúñas y lima. Perro o gato.',
-    lista: 68,
+    nombre: 'Kit de peluquería · 6 piezas',
+    texto: 'Máquina de corte recargable, cortaúñas, peine, tijera y cuatro guías.',
+    lista: 95,
     descuento: 30,
-    foto: null,
+    foto: '/img/prod-cepillado',
+    dibujo: 'cepillo',
   },
 ]
 
@@ -343,11 +346,12 @@ export const masVendidos = [
   },
   {
     id: 'desparasitante',
-    nombre: 'Desparasitante oral · 4 tabletas',
-    texto: 'Interno, de amplio espectro. Perro y gato.',
+    nombre: 'Desparasitante oral en tabletas',
+    texto: 'De amplio espectro. Para perros adultos.',
     lista: 58,
     descuento: 5,
-    foto: null,
+    foto: '/img/prod-desparasitante',
+    dibujo: 'pastillas',
   },
   {
     id: 'snacks',
@@ -355,7 +359,7 @@ export const masVendidos = [
     texto: 'Uno al día. Ayuda con el sarro.',
     lista: 39,
     descuento: 12,
-    foto: null,
+    foto: '/img/prod-snacks',
   },
 ]
 
