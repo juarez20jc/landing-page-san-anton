@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { clinica, cifras, portadas, enlaceWhatsapp } from '../data/clinica.js'
 import { useAbiertoAhora } from '../hooks/useAbiertoAhora.js'
-import { useRotacion } from '../hooks/useRotacion.js'
 import { Boton, Foto, Estrellas } from './ui/Primitivas.jsx'
 import { IconoWhatsapp, IconoFlecha, IconoFlechaIzq } from './icons/Iconos.jsx'
 
@@ -9,6 +8,14 @@ import { IconoWhatsapp, IconoFlecha, IconoFlechaIzq } from './icons/Iconos.jsx'
    Las tarjetas de producto van a dos porque son un vistazo; una portada no. */
 const INTERVALO = 6000
 const SIN_MOVIMIENTO = '(prefers-reduced-motion: reduce)'
+
+/* En celular la portada lleva el compás de las cifras, que giran con ella:
+   cuatro segundos quieta y uno de cambio. El deslizamiento dura lo mismo que
+   el giro de las paletas (duration-1000 en la pista), así que portada y
+   cifra salen y llegan a la vez. */
+const CELULAR = '(max-width: 639.98px)'
+const CIFRA_QUIETA = 4000
+const CIFRA_GIRO = 1000
 
 export default function Hero() {
   const { abierto, mensaje } = useAbiertoAhora()
@@ -24,7 +31,8 @@ export default function Hero() {
   useEffect(() => {
     if (detenido || total < 2) return
     if (window.matchMedia(SIN_MOVIMIENTO).matches) return
-    reloj.current = setTimeout(() => setI((n) => (n + 1) % total), INTERVALO)
+    const espera = window.matchMedia(CELULAR).matches ? CIFRA_QUIETA + CIFRA_GIRO : INTERVALO
+    reloj.current = setTimeout(() => setI((n) => (n + 1) % total), espera)
     return () => clearTimeout(reloj.current)
   }, [i, detenido, total])
 
@@ -52,13 +60,13 @@ export default function Hero() {
         {/* ------------------------------------------------- las portadas */}
         <div className="overflow-hidden">
           <div
-            className="flex transition-transform duration-700 ease-[cubic-bezier(.2,.8,.3,1)] motion-reduce:transition-none"
+            className="flex transition-transform duration-1000 ease-[cubic-bezier(.2,.8,.3,1)] motion-reduce:transition-none sm:duration-700"
             style={{ transform: `translateX(-${i * 100}%)` }}
           >
             {portadas.map((p, n) => (
               <div
                 key={p.id}
-                className="w-full shrink-0 transition-colors duration-700"
+                className="flex w-full shrink-0 items-center transition-colors duration-700"
                 style={{ backgroundColor: p.fondo }}
                 aria-hidden={n === i ? undefined : true}
                 inert={n === i ? undefined : true}
@@ -66,7 +74,7 @@ export default function Hero() {
                 <div className="contenedor">
                   {/* Desde tablet, foto y texto comparten franja: apilados
                       dejaban la foto sola en medio con aire a los lados. */}
-                  <div className="grid items-center gap-12 py-14 md:grid-cols-[1.1fr_0.9fr] md:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
+                  <div className="grid items-center gap-12 pb-8 pt-14 md:grid-cols-[1.1fr_0.9fr] md:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-12 lg:pt-24">
                     {/* ---------------------------------------- texto */}
                     <div>
                       <p className="etiqueta-dato flex flex-wrap items-center gap-x-3 gap-y-2 text-ambar">
@@ -146,7 +154,7 @@ export default function Hero() {
 
         {/* --------------------------------------------------- controles */}
         <div className="contenedor">
-          <div className="flex items-center gap-4 pb-10">
+          <div className="flex items-center gap-4 pb-5">
             <ul className="flex items-center gap-2">
               {portadas.map((p, n) => (
                 <li key={p.id}>
@@ -211,7 +219,7 @@ export default function Hero() {
           </div>
 
           {/* ----------------------------------------------------- cifras */}
-          <Cifras fondo={actual.fondo} pausado={detenido} />
+          <Cifras fondo={actual.fondo} indice={i % cifras.length} />
           <div className="h-14 lg:h-16" />
         </div>
       </div>
@@ -222,22 +230,23 @@ export default function Hero() {
 /* ------------------------------------------------------------- Cifras --- */
 
 /* En celular las tres cifras apiladas se comían la pantalla, así que salen
-   de una en una, como las paletas de un reloj de mesa: cada una se queda
-   cuatro segundos y el cambio dura uno. Desde 640 px, o si se pidió menos
-   movimiento, vuelve la rejilla de siempre. La pausa del hero las congela
-   junto con las portadas. */
-const CIFRA_QUIETA = 4000
-const CIFRA_GIRO = 1000
-const CELULAR = '(max-width: 639.98px) and (prefers-reduced-motion: no-preference)'
+   de una en una, como las paletas de un reloj de mesa. No llevan reloj
+   propio: `indice` es el de la portada, de modo que giran cuando ella se
+   desliza, también con las flechas, y se detienen con su pausa. Desde
+   640 px, o si se pidió menos movimiento, vuelve la rejilla de siempre. */
+const CON_PALETAS = `${CELULAR} and (prefers-reduced-motion: no-preference)`
 
-function Cifras({ fondo, pausado }) {
-  const { contenedor, activo, indice } = useRotacion(cifras.length, {
-    intervalo: CIFRA_QUIETA + CIFRA_GIRO,
-    consulta: CELULAR,
-    pausado,
-  })
+function Cifras({ fondo, indice }) {
+  const [activo, setActivo] = useState(() => window.matchMedia(CON_PALETAS).matches)
   // La que se va. Mientras no coincida con `indice` hay paletas en el aire.
   const [previa, setPrevia] = useState(indice)
+
+  useEffect(() => {
+    const mq = window.matchMedia(CON_PALETAS)
+    const alCambiar = () => setActivo(mq.matches)
+    mq.addEventListener('change', alCambiar)
+    return () => mq.removeEventListener('change', alCambiar)
+  }, [])
 
   if (!activo) {
     return (
@@ -278,7 +287,6 @@ function Cifras({ fondo, pausado }) {
       </dl>
 
       <div
-        ref={contenedor}
         aria-hidden="true"
         className="paleta"
         style={{ '--fondo': fondo, '--giro': `${CIFRA_GIRO}ms` }}
