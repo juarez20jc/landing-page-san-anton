@@ -482,3 +482,108 @@
     animation: none;
   }
 }
+
+/* =========================================================================
+   CIFRAS DEL HERO — reloj de paletas (sólo en celular)
+   -------------------------------------------------------------------------
+   Cada cifra es una tarjeta partida por la bisagra: el valor en la mitad de
+   arriba y la etiqueta en la de abajo. Al cambiar, la mitad de arriba de la
+   vieja cae hacia quien mira y deja ver la nueva; después la mitad de abajo
+   de la nueva baja y tapa la vieja. --giro (lo fija Hero.jsx) es el cambio
+   entero: media para caer, media para llegar.
+   ========================================================================= */
+
+@layer components {
+  .paleta {
+    position: relative;
+    block-size: 7.5rem;
+    perspective: 30rem;
+  }
+
+  /* La bisagra: una raya oscura que corta la tarjeta, como en el reloj. */
+  .paleta::after {
+    content: '';
+    position: absolute;
+    z-index: 3;
+    inset-inline: 0;
+    inset-block-start: calc(50% - 1px);
+    block-size: 2px;
+    background: rgb(0 0 0 / 0.38);
+  }
+
+  .hoja {
+    position: absolute;
+    inset-inline: 0;
+    block-size: 50%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--fondo);
+    border: 1px solid rgb(255 255 255 / 0.12);
+    transition: background-color 0.7s;
+  }
+
+  /* Arriba recibe algo más de luz que abajo, como una paleta de verdad. */
+  .hoja-arriba {
+    inset-block-start: 0;
+    align-items: flex-end;
+    padding-block-end: 0.3rem;
+    border-block-end: 0;
+    border-radius: 1rem 1rem 0 0;
+    background-image: linear-gradient(rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.035));
+    transform-origin: 50% 100%;
+  }
+
+  .hoja-abajo {
+    inset-block-start: 50%;
+    align-items: flex-start;
+    padding-block-start: 0.7rem;
+    border-block-start: 0;
+    border-radius: 0 0 1rem 1rem;
+    background-image: linear-gradient(rgb(255 255 255 / 0.025), rgb(255 255 255 / 0.01));
+    transform-origin: 50% 0;
+    /* Los cantos de las paletas que esperan su turno debajo. */
+    box-shadow:
+      0 0.3rem 0 -0.15rem rgb(255 255 255 / 0.09),
+      0 0.6rem 0 -0.3rem rgb(255 255 255 / 0.05);
+  }
+
+  /* Cae con gravedad: arranca lenta y acelera hasta quedar de canto. */
+  .hoja-cae {
+    z-index: 2;
+    animation: hoja-cae calc(var(--giro) / 2) cubic-bezier(0.55, 0, 0.85, 0.35) forwards;
+  }
+
+  /* Llega y da un pequeño rebote al chocar con el tope. */
+  .hoja-llega {
+    z-index: 2;
+    box-shadow: none;
+    animation: hoja-llega calc(var(--giro) / 2) cubic-bezier(0.2, 0.9, 0.35, 1.25)
+      calc(var(--giro) / 2) backwards;
+  }
+
+  /* La nueva sale de la sombra que le hacía la paleta que se va. */
+  .hoja-asoma {
+    animation: hoja-asoma calc(var(--giro) / 2) ease-in;
+  }
+}
+
+@keyframes hoja-cae {
+  to {
+    transform: rotateX(-90deg);
+    filter: brightness(0.55);
+  }
+}
+
+@keyframes hoja-llega {
+  from {
+    transform: rotateX(90deg);
+    filter: brightness(0.55);
+  }
+}
+
+@keyframes hoja-asoma {
+  from {
+    filter: brightness(0.6);
+  }
+}

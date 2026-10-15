@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { clinica, cifras, portadas, enlaceWhatsapp } from '../data/clinica.js'
 import { useAbiertoAhora } from '../hooks/useAbiertoAhora.js'
+import { useRotacion } from '../hooks/useRotacion.js'
 import { Boton, Foto, Estrellas } from './ui/Primitivas.jsx'
 import { IconoWhatsapp, IconoFlecha, IconoFlechaIzq } from './icons/Iconos.jsx'
 
@@ -63,7 +64,9 @@ export default function Hero() {
                 inert={n === i ? undefined : true}
               >
                 <div className="contenedor">
-                  <div className="grid items-center gap-12 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
+                  {/* Desde tablet, foto y texto comparten franja: apilados
+                      dejaban la foto sola en medio con aire a los lados. */}
+                  <div className="grid items-center gap-12 py-14 md:grid-cols-[1.1fr_0.9fr] md:gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
                     {/* ---------------------------------------- texto */}
                     <div>
                       <p className="etiqueta-dato flex flex-wrap items-center gap-x-3 gap-y-2 text-ambar">
@@ -80,11 +83,11 @@ export default function Hero() {
                         <p className="mt-5 text-despliegue text-white">{p.titulo}</p>
                       )}
 
-                      <p className="mt-7 max-w-xl text-subtitulo leading-relaxed text-menta">
+                      <p className="mt-7 max-w-xl text-subtitulo leading-relaxed text-menta md:text-lg lg:text-subtitulo">
                         {p.texto}
                       </p>
 
-                      <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                      <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                         <Boton href="#cita" className="w-full sm:w-auto" tabIndex={n === i ? 0 : -1}>
                           Reservar cita
                         </Boton>
@@ -121,7 +124,7 @@ export default function Hero() {
                     </div>
 
                     {/* ----------------------------------------- ficha */}
-                    <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+                    <div className="relative mx-auto w-full max-w-md md:max-w-none">
                       <div className="ficha ficha-pestana bg-eucalipto/40 p-2.5">
                         <Foto
                           src={p.foto}
@@ -129,7 +132,7 @@ export default function Hero() {
                           width={512}
                           height={640}
                           prioridad={n === 0}
-                          sizes="(min-width: 1024px) 42vw, (min-width: 640px) 26rem, 90vw"
+                          sizes="(min-width: 1024px) 42vw, (min-width: 768px) 40vw, (min-width: 640px) 26rem, 90vw"
                           className="aspect-[4/5] w-full rounded-[0.85rem] object-cover"
                         />
                       </div>
@@ -208,27 +211,124 @@ export default function Hero() {
           </div>
 
           {/* ----------------------------------------------------- cifras */}
-          <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/12 bg-white/12 sm:grid-cols-3">
-            {cifras.map((c) => (
-              <div
-                key={c.etiqueta}
-                className="px-5 py-6 text-center transition-colors duration-700 sm:text-left"
-                style={{ backgroundColor: actual.fondo }}
-              >
-                <dt className="sr-only">{c.etiqueta}</dt>
-                <dd>
-                  <span className="font-display text-4xl font-bold text-ambar">
-                    {c.valor}
-                    <span className="text-2xl">{c.sufijo}</span>
-                  </span>
-                  <span className="mt-1 block text-sm text-menta/85">{c.etiqueta}</span>
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <Cifras fondo={actual.fondo} pausado={detenido} />
           <div className="h-14 lg:h-16" />
         </div>
       </div>
     </section>
+  )
+}
+
+/* ------------------------------------------------------------- Cifras --- */
+
+/* En celular las tres cifras apiladas se comían la pantalla, así que salen
+   de una en una, como las paletas de un reloj de mesa: cada una se queda
+   cuatro segundos y el cambio dura uno. Desde 640 px, o si se pidió menos
+   movimiento, vuelve la rejilla de siempre. La pausa del hero las congela
+   junto con las portadas. */
+const CIFRA_QUIETA = 4000
+const CIFRA_GIRO = 1000
+const CELULAR = '(max-width: 639.98px) and (prefers-reduced-motion: no-preference)'
+
+function Cifras({ fondo, pausado }) {
+  const { contenedor, activo, indice } = useRotacion(cifras.length, {
+    intervalo: CIFRA_QUIETA + CIFRA_GIRO,
+    consulta: CELULAR,
+    pausado,
+  })
+  // La que se va. Mientras no coincida con `indice` hay paletas en el aire.
+  const [previa, setPrevia] = useState(indice)
+
+  if (!activo) {
+    return (
+      <dl className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/12 bg-white/12 sm:grid-cols-3">
+        {cifras.map((c) => (
+          <div
+            key={c.etiqueta}
+            className="px-5 py-6 text-center transition-colors duration-700 sm:text-left"
+            style={{ backgroundColor: fondo }}
+          >
+            <dt className="sr-only">{c.etiqueta}</dt>
+            <dd>
+              <Valor c={c} />
+              <span className="mt-1 block text-sm text-menta/85">{c.etiqueta}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    )
+  }
+
+  const girando = previa !== indice
+
+  return (
+    <>
+      {/* El lector de pantalla recibe las tres de una vez: el giro es sólo
+          para la vista y anunciar cada cambio sería ruido. */}
+      <dl className="sr-only">
+        {cifras.map((c) => (
+          <div key={c.etiqueta}>
+            <dt>{c.etiqueta}</dt>
+            <dd>
+              {c.valor}
+              {c.sufijo}
+            </dd>
+          </div>
+        ))}
+      </dl>
+
+      <div
+        ref={contenedor}
+        aria-hidden="true"
+        className="paleta"
+        style={{ '--fondo': fondo, '--giro': `${CIFRA_GIRO}ms` }}
+      >
+        {/* Detrás: arriba ya espera la nueva y abajo sigue la vieja. */}
+        <Hoja n={indice} mitad="arriba" className={girando ? 'hoja-asoma' : ''} />
+        <Hoja n={girando ? previa : indice} mitad="abajo" />
+
+        {/* Delante: la mitad de arriba de la vieja cae y, al llegar abajo,
+            la mitad de abajo de la nueva la tapa. */}
+        {girando && (
+          <>
+            <Hoja key={`cae-${indice}`} n={previa} mitad="arriba" className="hoja-cae" />
+            <Hoja
+              key={`llega-${indice}`}
+              n={indice}
+              mitad="abajo"
+              className="hoja-llega"
+              onAnimationEnd={() => setPrevia(indice)}
+            />
+          </>
+        )}
+      </div>
+    </>
+  )
+}
+
+function Hoja({ n, mitad, className = '', ...props }) {
+  const c = cifras[n]
+  return (
+    <div className={`hoja hoja-${mitad} ${className}`} {...props}>
+      {mitad === 'arriba' ? (
+        <>
+          <span className="etiqueta-dato absolute left-4 top-3 text-menta/45">
+            {n + 1}/{cifras.length}
+          </span>
+          <Valor c={c} className="leading-none" />
+        </>
+      ) : (
+        <span className="text-sm text-menta/85">{c.etiqueta}</span>
+      )}
+    </div>
+  )
+}
+
+function Valor({ c, className = '' }) {
+  return (
+    <span className={`font-display text-4xl font-bold text-ambar ${className}`}>
+      {c.valor}
+      <span className="text-2xl">{c.sufijo}</span>
+    </span>
   )
 }

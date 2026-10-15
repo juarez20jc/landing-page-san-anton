@@ -9,14 +9,16 @@ const SIN_MOVIMIENTO = '(prefers-reduced-motion: reduce)'
  *
  * No es un carrusel: aquí no hay nada que arrastrar ni que desplazar, sólo
  * un elemento visible cada vez. Se usa para los cuatro motivos de la clínica
- * en celular, donde apilados se comían media pantalla.
+ * en celular, donde apilados se comían media pantalla, y para las cifras del
+ * hero en celular.
  *
- * A partir de 1024 px se apaga (`activo` en false) y quien lo use debe
- * pintar la rejilla completa.
+ * Fuera de `consulta` (por defecto, a partir de 1024 px) se apaga (`activo`
+ * en false) y quien lo use debe pintar la rejilla completa. `pausado` deja
+ * que otro control, como la pausa del hero, lo congele desde fuera.
  */
-export function useRotacion(total, { intervalo = 2000 } = {}) {
+export function useRotacion(total, { intervalo = 2000, consulta = SOLO_TACTIL, pausado = false } = {}) {
   const [activo, setActivo] = useState(
-    () => typeof window !== 'undefined' && window.matchMedia(SOLO_TACTIL).matches,
+    () => typeof window !== 'undefined' && window.matchMedia(consulta).matches,
   )
   const [indice, setIndice] = useState(0)
   const [detenido, setDetenido] = useState(false)
@@ -24,12 +26,12 @@ export function useRotacion(total, { intervalo = 2000 } = {}) {
   const [aLaVista, setALaVista] = useState(true)
 
   useEffect(() => {
-    const mq = window.matchMedia(SOLO_TACTIL)
+    const mq = window.matchMedia(consulta)
     const alCambiar = () => setActivo(mq.matches)
     alCambiar()
     mq.addEventListener('change', alCambiar)
     return () => mq.removeEventListener('change', alCambiar)
-  }, [])
+  }, [consulta])
 
   // Fuera de pantalla no tiene sentido que siga girando.
   useEffect(() => {
@@ -41,11 +43,11 @@ export function useRotacion(total, { intervalo = 2000 } = {}) {
   }, [activo])
 
   useEffect(() => {
-    if (!activo || detenido || !aLaVista || total < 2) return
+    if (!activo || detenido || pausado || !aLaVista || total < 2) return
     if (window.matchMedia(SIN_MOVIMIENTO).matches) return
     const id = setInterval(() => setIndice((i) => (i + 1) % total), intervalo)
     return () => clearInterval(id)
-  }, [activo, detenido, aLaVista, total, intervalo])
+  }, [activo, detenido, pausado, aLaVista, total, intervalo])
 
   return {
     contenedor,
