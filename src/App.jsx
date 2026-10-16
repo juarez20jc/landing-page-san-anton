@@ -1,6 +1,7 @@
 import { useDesplazado } from './hooks/useDesplazado.js'
 import { ProveedorPedido } from './hooks/usePedido.jsx'
 import { liquidacion, masVendidos } from './data/clinica.js'
+import AvisoDemo from './components/AvisoDemo.jsx'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import Servicios from './components/Servicios.jsx'
@@ -29,6 +30,7 @@ export default function App() {
 
       <div ref={centinela} aria-hidden="true" className="h-px" />
 
+      <AvisoDemo />
       <Header compacto={desplazado} />
 
       <main id="contenido">

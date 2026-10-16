@@ -5,6 +5,7 @@ import {
   direccionUnaLinea,
   enlaceMapa,
   enlaceWhatsapp,
+  avisoDemo,
 } from '../data/clinica.js'
 import {
   Logotipo,
@@ -155,9 +156,18 @@ export default function Footer() {
 
         {/* ---------------------------------------------------------- legal */}
         <div className="flex flex-col gap-4 border-t border-white/12 pt-6 pb-24 text-sm text-menta/60 sm:flex-row sm:items-center sm:justify-between sm:pb-20">
-          <p>
-            © {new Date().getFullYear()} {clinica.nombre}. Todos los derechos reservados.
-          </p>
+          <div className="space-y-1.5">
+            <p>
+              © {new Date().getFullYear()} {clinica.nombre}. Todos los derechos reservados.
+            </p>
+            {clinica.demo && (
+              <p className="max-w-xl text-menta/80">
+                <strong className="font-semibold text-ambar">Sitio demostrativo.</strong>{' '}
+                {avisoDemo} Las reservas y pedidos por WhatsApp llegan a quien hizo la
+                demo, no a una veterinaria.
+              </p>
+            )}
+          </div>
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
             <li>
               <a href="#contacto" className={enlaceLista}>

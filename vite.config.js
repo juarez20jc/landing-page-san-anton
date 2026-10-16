@@ -30,8 +30,13 @@ function seoDesdeDatos() {
       )
       const { clinica, servicios, direccionUnaLinea } = datos // eslint-disable-line no-unused-vars
 
-      const titulo = `${clinica.nombre} · Veterinaria con urgencias 24 h en ${clinica.direccion.zona}, ${clinica.direccion.ciudad}`
+      // En modo demo, lo que se ve al compartir el enlace (título y
+      // descripción de Open Graph) ya avisa de que es un ejemplo.
+      const titulo =
+        `${clinica.nombre} · Veterinaria con urgencias 24 h en ${clinica.direccion.zona}, ${clinica.direccion.ciudad}` +
+        (clinica.demo ? ' (sitio demostrativo)' : '')
       const descripcion =
+        (clinica.demo ? `Sitio demostrativo. ${datos.avisoDemo} ` : '') +
         `Clínica veterinaria en ${clinica.direccion.zona}, ${clinica.direccion.distrito}, ${clinica.direccion.ciudad}. ` +
         `Consulta, vacunación, cirugía, estética, laboratorio y urgencias 24/7. ` +
         `Agenda tu cita por WhatsApp al ${clinica.telefono.visible}.`
@@ -84,6 +89,8 @@ function seoDesdeDatos() {
           name: s.titulo,
           description: s.texto,
         })),
+        // Deben ser las reseñas reales del perfil de Google: las de ejemplo
+        // nunca salen, porque en modo demo no se publica esta ficha.
         aggregateRating: {
           '@type': 'AggregateRating',
           ratingValue: '4.9',
@@ -99,6 +106,13 @@ function seoDesdeDatos() {
       return {
         html: html
           .replace(/<title>.*?<\/title>/, `<title>${titulo}</title>`)
+          // Un negocio ficticio no debe salir en Google como si existiera.
+          .replace(
+            /<meta name="robots"[^>]*>/,
+            clinica.demo
+              ? '<meta name="robots" content="noindex, follow" />'
+              : '<meta name="robots" content="index, follow, max-image-preview:large" />',
+          )
           .replaceAll('{{TELEFONO_TEL}}', clinica.telefono.tel)
           .replaceAll('{{TELEFONO_VISIBLE}}', clinica.telefono.visible),
         tags: [
@@ -124,12 +138,17 @@ function seoDesdeDatos() {
           { tag: 'meta', attrs: { name: 'twitter:description', content: descripcion }, injectTo: 'head' },
           { tag: 'meta', attrs: { name: 'twitter:image', content: ogImagen }, injectTo: 'head' },
 
-          {
-            tag: 'script',
-            attrs: { type: 'application/ld+json' },
-            children: JSON.stringify(jsonLd),
-            injectTo: 'head',
-          },
+          // La ficha de negocio para Google sólo cuando la clínica es real.
+          ...(clinica.demo
+            ? []
+            : [
+                {
+                  tag: 'script',
+                  attrs: { type: 'application/ld+json' },
+                  children: JSON.stringify(jsonLd),
+                  injectTo: 'head',
+                },
+              ]),
         ],
       }
     },

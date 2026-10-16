@@ -12,6 +12,13 @@ export const clinica = {
   claim: 'Clínica Veterinaria',
   fundacion: 2011,
 
+  // SITIO DEMOSTRATIVO. Mientras esté en true, San Antón se presenta como
+  // lo que es, una clínica ficticia: sale el aviso arriba y en el pie, el
+  // título lo dice, se pide a los buscadores que no la indexen y no se
+  // publica la ficha de negocio para Google (con sus reseñas de ejemplo).
+  // Ponlo en false sólo cuando todos los datos de este archivo sean reales.
+  demo: true,
+
   // Dominio final del sitio. Se usa para el canonical, Open Graph,
   // sitemap.xml y los datos estructurados de Google.
   sitio: 'https://juarez20jc.github.io/landing-page-san-anton',
@@ -201,6 +208,10 @@ export const direccionUnaLinea = [
 
 /** Texto completo para el mapa y para «cómo llegar». */
 export const direccionCompleta = `${direccionUnaLinea}, ${clinica.direccion.ciudad}, Perú`
+
+/** Lo que dice el aviso de sitio demostrativo, en la página y en el <head>. */
+export const avisoDemo =
+  `${clinica.nombre} es una clínica ficticia: las cifras, las reseñas, los precios y la dirección son de ejemplo.`
 
 export const enlaceWhatsapp = (mensaje) =>
   `https://wa.me/${clinica.whatsapp}?text=${encodeURIComponent(mensaje)}`
