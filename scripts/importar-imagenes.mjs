@@ -14,9 +14,9 @@ const DESTINO = 'public/img'
    recortar: true pasa un trim() que come el borde blanco uniforme, para que
             el artículo llene el marco en vez de nadar en él. */
 const IMAGENES = [
-  ['portada-mt4tb52e-glbo.jpg', 'portada', 512],
-  ['gemini_generated_image_nl5an0nl5an0nl5a-mtc7qyhj-lbt5.jpg', 'portada-2', 512],
-  ['gemini_generated_image_xag9qexag9qexag9-mtc5de11-juvf.jpg', 'portada-3', 512],
+  ['portada-1-vertical.png', 'portada', 512],
+  ['portada-2-vertical.png', 'portada-2', 512],
+  ['portada-3-vertical.png', 'portada-3', 512],
   ['gemini_generated_image_8kah1g8kah1g8kah--mtc1autl-ou7v.jpg', 'clinica', 700],
   ['gemini_generated_image_pkgqagpkgqagpkgq-mtc501zy-xq72.jpg', 'urgencias', 640],
   ['images-mtc860fm-livu.jpg', 'prod-cama', 320],
