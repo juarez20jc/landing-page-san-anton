@@ -21,7 +21,7 @@ export const clinica = {
 
   // Dominio final del sitio. Se usa para el canonical, Open Graph,
   // sitemap.xml y los datos estructurados de Google.
-  sitio: 'https://juarez20jc.github.io/landing-page-san-anton',
+  sitio: 'https://sananton.opcomppe.com',
 
   // --- CONTACTO -----------------------------------------------------------
   // telefono.visible  -> lo que se muestra en pantalla

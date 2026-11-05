@@ -155,9 +155,9 @@ function seoDesdeDatos() {
   }
 }
 
-export default defineConfig(({ command }) => ({
-  // En GitHub Pages el sitio cuelga de una subcarpeta; en local, de la raíz.
-  base: command === 'build' ? '/landing-page-san-anton/' : '/',
+export default defineConfig(() => ({
+  // Se publica en la raíz de sananton.opcomppe.com (Cloudflare Workers, cuenta de OPCOMP).
+  base: '/',
   plugins: [react(), tailwindcss(), seoDesdeDatos()],
   build: {
     target: 'es2022',

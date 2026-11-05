@@ -47,9 +47,7 @@ Si el push se rechaza porque el remoto va por delante, **no fuerces nada**: cué
 
 ## Después de subir
 
-Este repositorio publica en GitHub Pages con GitHub Actions: cada push a `main` relanza el despliegue de <https://juarez20jc.github.io/landing-page-san-anton/>.
-
-Comprueba cómo va con `gh run list --limit 1`. Si sigue en marcha, dilo y no te quedes esperando; si falló, mira `gh run view --log-failed` y explica qué se rompió.
+El push solo guarda el código: **no publica**. La web vive en <https://sananton.opcomppe.com/> (Cloudflare Workers, cuenta de OPCOMP) y se publica aparte con `npm run deploy`. Recuérdale al usuario que lo corra si quiere ver los cambios en línea.
 
 ## Qué contarle al usuario
 
@@ -57,5 +55,5 @@ Tres o cuatro líneas, sin adornos:
 
 - qué subiste, en una frase
 - el asunto del commit y su hash corto
-- si el despliegue arrancó, terminó bien o falló
+- que la web no se actualiza hasta correr `npm run deploy`
 - cualquier cosa que dejaras fuera a propósito, y por qué
